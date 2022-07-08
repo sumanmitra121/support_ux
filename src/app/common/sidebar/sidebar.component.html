@@ -1,0 +1,390 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+
+    <ul id="accordion" class="accordion">
+  <li>
+  <div class="link"><a a routerLinkActive="true" routerLink="/dashboard"><i class="fa fa-tachometer"></i>Dashboard</a></div>
+  </li>
+
+
+
+
+    <!-- <li>
+      <div class="link" (click)="openclosedropdown()"><i class="fa fa-mobile"></i>Admin<i class="fa fa-chevron-down" id="down" ></i></div>
+      <ul class="submenu" id="openclose">
+        <li><a  routerLinkActive="true" routerLink="/item">Client Type</a></li>
+        <li><a  routerLinkActive="true" routerLink="/stackholders">Stakeholder</a></li>
+      </ul>
+    </li> -->
+
+
+
+    <li *ngIf="u_type=='A' || u_type=='M' || u_type=='T'">
+        <div class="link" (click)="openclosedropdown()"><i class="fa fa-database"></i>Masters<i class="fa fa-chevron-down " id="down1" ></i></div>
+        <ul class="submenu" id="openclose1" >
+          <li><a  routerLinkActive="true" routerLink="/clienttypemaster/dashboard" >Client Type</a></li>
+          <li><a  routerLinkActive="true" routerLink="/operationmode/dashboard">Operational Mode</a></li>
+          <li><a  routerLinkActive="true" routerLink="/ticketstatus/dashboard">Ticket Status</a></li>
+          <li><a  routerLinkActive="true" routerLink="/prioritymode/dashboard">Priority Mode</a></li>
+          <li><a  routerLinkActive="true" routerLink="/mastermodule/dashboard">Module</a></li>
+          <li><a  routerLinkActive="true" routerLink="/addemp/dashboard">Employees</a></li>
+          <li><a  routerLinkActive="true" routerLink="/addclient/dashboard">Clients</a></li>
+
+        </ul>
+    </li>
+
+      <li [hidden]="u_type=='C'">
+        <div  class="link" (click)="openclosedropdown1()"><i class="fa fa-wrench"></i>Operations<i class="fa fa-chevron-down" id="down1" ></i></div>
+        <ul class="submenu" id="openclose">
+
+          <!-- <li [hidden]="Etype||utype||u_type=='A'||u_type=='M' || u_type=='T'|| u_type=='V'"><a routerLink="/Add/clientraisetkt" routerLinkActive="true">Raise Ticket</a></li> -->
+          <li [hidden]="Ctype"><a  routerLinkActive="true" routerLink="/operations/raiseticket">Raise Ticket</a></li>
+          <li [hidden]="utype || Etype||Ctype">
+            <!-- <a routerLinkActive="true" routerLink="/operations/assignticket">Assign Ticket</a> -->
+            <a  
+             href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1">
+              Assign Ticket
+              <i class="fa fa-chevron-down float-right" style="position:static;"></i>
+              
+            </a>
+            <div class="collapse" id="submenu1sub1" aria-expanded="false">
+              <ul class="flex-column nav">
+                <li class="text-center">
+                 <a  [routerLink]="['/operations/assignticket',1]"> Web & Mobile</a>
+                </li>
+                <li class="text-center">
+                 <a  [routerLink]="['/op_assignticket',0]">Banking</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li [hidden]="utype||Ctype">
+            <a *ngIf="u_type == 'E'" routerLinkActive="true" [routerLink]="['/op_attendanddeliver',0]">
+              Attend & Deliver Ticket
+            </a>
+            <a *ngIf="u_type == 'W'" routerLinkActive="true" [routerLink]="['/op_attendanddeliver',1]">
+              Attend & Deliver Ticket
+            </a>
+
+              <a href="#submenu1sub2" data-toggle="collapse" data-target="#submenu1sub2" *ngIf="u_type == 'A'">
+                Attend & Deliver Ticket
+              <i class="fa fa-chevron-down float-right" style="position:static;"></i>
+
+              </a>   
+           
+            <div class="collapse" id="submenu1sub2" aria-expanded="false">
+              <ul class="flex-column nav">
+                <li class="text-center">
+                <a  [routerLink]="['/operations/attendanddeliver',1]"> Web & Mobile</a>
+                </li>
+                <li class="text-center">
+                 <a  [routerLink]="['/op_attendanddeliver',0]">Banking</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </li>
+
+      <li [hidden]="Etype||utype||u_type=='A'||u_type=='M' || u_type=='T'|| u_type=='V'"><div class="link log"><i class="fa fa-ticket" aria-hidden="true"></i><a routerLink="/Add/clientraisetkt" routerLinkActive="true">Book Ticket</a></div></li> 
+
+
+
+      <li *ngIf="u_type=='C'"> <div class="link log"><i class="fa fa-ticket" aria-hidden="true"></i><a  routerLink="/Clientraisetkt" routerLinkActive="true">My Tickets</a></div></li>
+
+
+      <li [hidden]="u_type=='C'">
+        <div  class="link" (click)="openclosesearchticket()"><i class="fa fa-search" aria-hidden="true"></i>Search Ticket<i class="fa fa-chevron-down "></i></div>
+        <ul class="submenu" id="openclose_searchtkt">
+          <li><a data-toggle="modal" data-target="#mymodal_tkt" (click)="make_true('D')">Search by Date </a></li>
+          <li><a data-toggle="modal" data-target="#mymodal_tkt" (click)="make_true('T')">Search by Ticket No.</a></li>
+          <li><a data-toggle="modal" data-target="#mymodal_tkt" (click)="make_true('C')">Search by Client</a></li>
+          <li><a data-toggle="modal" data-target="#mymodal_tkt" (click)="make_true('E')">Search by Employee</a></li>
+
+        </ul>
+
+      </li>
+
+      <!-- <li *ngIf="u_type=='C'"> <div class="link log"><i class="fa fa-search" aria-hidden="true"></i><a  data-toggle="modal" data-target="#mymodal_tkt" (click)="make_true()">Search Tickets By Ticket No.</a></div></li> -->
+      <li *ngIf="u_type=='C'"> <div class="link log"><i class="fa fa-search" aria-hidden="true"></i><a  data-toggle="modal" data-target="#mymodal_dt" (click)="make_date_true()">Search</a></div></li>
+
+
+
+
+
+
+    <li *ngIf="u_type=='A' || u_type=='M'">
+      <div  class="link" (click)="opencloseadminsubmenu()"><i class="fa fa-user" aria-hidden="true"></i>Admin<i class="fa fa-chevron-down "></i></div>
+      <ul class="submenu" id="openclose_admin">
+        <li><a   routerLinkActive="true" routerLink="/operations/Admin/usermaintanance">User Maintainance</a></li>
+        <li><a  routerLinkActive="true" routerLink="/operations/Admin/notifications">Notification</a></li>
+      </ul>
+
+    </li>
+    <!-- <li *ngIf="u_type=='C'">
+      <div class="link log">
+        <i class="fa fa-address-card-o"></i>Assigned
+    </div>
+
+    </li> -->
+
+    
+
+  <li *ngIf="u_type=='C'">
+  <div class="link log" data-toggle="modal" data-target="#mymodal" ><i class="fa fa-sign-out" ></i>Log out</div>
+  </li>
+
+  <br>
+
+
+    <div *ngIf="u_type!='C'">
+
+    <mat-divider></mat-divider>
+ 
+    <small class="text-center text-white ml-4 mt-2"><strong>Engineer Status</strong></small>
+    <ul id="accordion" class="accordion" *ngFor="let u of user_data">
+    
+      <li *ngIf="(u.login_status=='1'||u.login_status=='2') && u.code_no!=u_id"  class="text-white">
+     
+        <div class="link log">
+
+          <div class="ring-container" *ngIf="u.login_status == '1'">
+            <div class="ringring"></div>
+            <div class="circle"></div>
+
+
+           </div>
+           <span class="dot1" *ngIf="u.login_status == '2'"></span
+            >
+
+          <img [src]="u.image?this.uri+u.image:'/assets/profile.png'" alt="Avatar" id="imageee" class="avatar" #img (click)="show_Image(img.src)" [matMenuTriggerFor]="menuHero" />&nbsp;&nbsp;{{u.user_name}}</div>
+      
+        <mat-divider style="color:grey" *ngIf="u.login_status=='1'||u.login_status=='2'"></mat-divider>
+   
+           </li>
+          </ul>
+</div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+  </nav>
+
+
+
+
+
+
+
+<div class="modal fade in" id="mymodal" >
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+
+<div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center w-100 ">Alert!!</h4>
+
+
+        <button type="button" class="close pt-1" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <p class="text-center p-4 h4"><strong>Are you sure you want to log out? </strong></p>
+      </div>
+      <div class="modal-footer p-3">
+        <button type="button" class="btn btn-dark btn-lg text-white" data-dismiss="modal" (click)="logout()">Ok</button>
+        <button type="button" class="btn btn-dark btn-lg text-white" data-dismiss="modal">Cancel</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="modal fade in" id="mymodal_dt" >
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center w-100 "><b>Please enter a date range</b></h4>
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+
+        <button type="button" class="close pt-1" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-row">
+
+              <div class="col">
+                <label for="frm">From :</label>
+                <input id="frm" class="form-control" type="date" #from_date (change)="prevent_null_frm()">
+              </div>
+              <div class="col">
+                <label for="t">To :</label>
+                <input id="t" class="form-control" type="date" #to_date (change)="prevent_null_to()">
+              </div>
+
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer p-3">
+        <button type="button" class="btn btn-dark btn-lg text-white" data-dismiss="modal" [disabled]="done_dt" (click)="srch_dt(from_date.value,to_date.value,'','D')">Submit</button>
+        <button type="button" class="btn btn-dark btn-lg text-white" data-dismiss="modal">Cancel</button>
+        <!-- <button mat-button data-dismiss="modal" class="color mr-2" (click)="logout()">Ok</button>
+        <button mat-button data-dismiss="modal"  class="color ">Cancel</button> -->
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal fade in" id="mymodal_tkt" >
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center w-100 ">{{form_type == 'T' ? "Please enter a Ticket Number" : form_type=='D' ? "Search By Date" : form_type=='E' ?  "Search By Employee" : "Search By Client"}}</h4>
+        <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+
+        <button type="button" class="close pt-1" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <form [formGroup]="getForm" (ngSubmit)="searchTkt()">
+      <div class="modal-body">
+        <div class="alert alert-danger text-center alert-dismissible show mb-3" role="alert" *ngIf="dateLessThan() && form_type!='T'">
+          Please Enter Valid Date Range
+        </div>
+          <div class="form-group" *ngIf="form_type == 'T'">
+            <label>Ticket No.</label>
+                <input formControlName="tkt_no" class="form-control" type="text">
+                <!-- <span class="text-danger" *ngIf="done && prevent">Please enter a Ticket No.</span> -->
+          </div>
+          <div class="form-group" *ngIf="form_type != 'T'">
+            <label>Start Date</label>
+            <input  class="form-control" type="date" formControlName="frm_dt">
+           </div>
+          <div class="form-group" *ngIf="form_type != 'T'">
+            <label>End Date</label>
+              <input  class="form-control" type="date" formControlName="to_dt">
+           </div>
+           <div class="form-group" *ngIf="form_type != 'T' && form_type == 'C'">
+            <label>Select Client</label>
+            <select class="form-control select2" formControlName="client_name">
+              <option value="">Select</option>
+              <option *ngFor="let client of clients" value="{{client.id}}">{{client.client_name}}</option>
+            </select>
+         </div>
+         <div class="form-group" *ngIf="form_type != 'T' && form_type == 'E'">
+          <label>Select Employee</label>
+          <select class="form-control" formControlName="employee_name">
+            <option value="">Select</option>
+            <option *ngFor="let emp of employee" value="{{emp.emp_code}}">{{emp.emp_name}}</option>
+          </select>
+          <!-- <input  class="form-control" type="text" placeholder="Enter Employee" formControlName="employee_name"> -->
+       </div>
+      </div>
+      <div class="modal-footer p-3">
+        <button type="submit" class="btn btn-dark btn-lg text-white" [disabled]="form_type=='T' ? f.tkt_no.value == '' : form_type=='D' ? f.frm_dt.value == '' || f.to_dt.value == '' || f.frm_dt.value > f.to_dt.value : form_type=='E' ? f.frm_dt.value == '' || f.to_dt.value == '' || f.employee_name.value == '' || f.frm_dt.value > f.to_dt.value  : f.frm_dt.value == '' || f.to_dt.value == '' || f.client_name.value == '' || f.frm_dt.value > f.to_dt.value ">Submit</button>
+        <button type="button" class="btn btn-dark btn-lg text-white" data-dismiss="modal">Cancel</button>
+        <!-- <button type="button" class="btn btn-dark btn-lg text-white" data-dismiss="modal" [disabled]="done" (click)="srch_tkt(tkt_ref.value)">Submit</button>
+        <button type="button" class="btn btn-dark btn-lg text-white" data-dismiss="modal">Cancel</button> -->
+      </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<!--
+ <div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+
+      <div class="modal-header">
+        <h6 class="modal-title w-100 text-center">Alert!!</h6>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+
+      <div class="modal-body text-center ">
+       <p>Are you sure you want to log out?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-dark" data-dismiss="modal" (click)="logout()">Ok</button>
+
+      </div>
+
+    </div>
+  </div>
+</div> -->
+
+<mat-menu #menuHero="matMenu" xPosition="after">
+
+  <div class="d-flex justify-content-center">
+    <img src="{{this.image_ur}}" class="img-fluid thumbnail mt-2" height="100px" width="100px"/>
+  </div>
+</mat-menu>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

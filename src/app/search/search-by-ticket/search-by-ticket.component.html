@@ -1,0 +1,125 @@
+
+
+
+<app-header></app-header>
+
+
+
+<div class="page-body-wrapper">
+  <app-sidebar></app-sidebar>
+
+
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="card">
+           <div class="card-body">
+            <div class="titleSec">
+                <!-- <button class="btn btn-primary" type="button" (click)="go_to_AddItem()">Add</button> -->
+                <h2>Search results for Ticket No. : {{tkt}} </h2>
+
+                <!-- <div id="snackbar" class="text-danger pull-right">{{linkshareinterpolation}}</div> -->
+
+                <!-- <span class="confirm-div" id="snackbar" style="float:right; color:green;">
+                  {{linkshareinterpolation}}
+                  </span> -->
+              </div>
+
+
+
+
+              <div class="row">
+              <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#ffffff" type = "ball-pulse" [fullScreen] = "true"><p style="color: white" > Please Wait... </p></ngx-spinner>
+
+
+                <!-- <div class="alert  ml-5" role="alert" [hidden]="alert_show">
+                    Item Deleted Successfully!! &#x2714;
+                   <span class="closebtn span pl-5" (click)="close_alert()">&times;</span>
+                  </div> -->
+                <div class="col-sm-12">
+
+
+
+
+
+                  <div class="row">
+                    <div class="col-md-9 "></div>
+                    <div class="col-md-3 pull-right">
+                      <mat-form-field appearance="outline">
+                        <mat-label>Search </mat-label>
+                        <input matInput (keyup)="applyFilter($event)" class="pull-right" placeholder="Search Item " #input>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="mat-elevation-z8">
+                    <table mat-table [dataSource]="dataSource" matSort>
+
+
+                      <ng-container matColumnDef="Report Date">
+                        <th mat-header-cell *matHeaderCellDef>Report Date </th>
+
+                        <td mat-cell *matCellDef="let row"> {{row.log_in | date:'dd-MM-yyyy h:mm:ss a '}} </td>
+
+                      </ng-container>
+
+
+                      <ng-container matColumnDef="Ticket No.">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header="Ticket No."> Ticket No.</th>
+                        <td mat-cell *matCellDef="let row">{{row.tkt_no}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="Client Name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header="Client Name"> Client Name</th>
+                        <td mat-cell *matCellDef="let row">{{row.client_name}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="Assigned To">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header="Assigned To"> Assigned To</th>
+                        <td mat-cell *matCellDef="let row">{{row.emp_name}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="Status">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header="Status"> Status</th>
+                        <td mat-cell *matCellDef="let row"><div *ngIf="row.work_status == 0">Pending</div><div *ngIf="row.work_status == 1">Done</div> </td>
+                      </ng-container>
+
+
+
+                      <ng-container matColumnDef="View">
+                        <th mat-header-cell *matHeaderCellDef> View </th>
+
+                        <td mat-cell *matCellDef="let row"><a (click)="view_page(row.id)" class="delete editeCus"
+
+                            title="View"
+                        ><i class="fa fa-eye" aria-hidden="true" style="color:#282a3c;"></i></a></td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+                      <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No data found "{{input.value}}"</td>
+                      </tr>
+                    </table>
+
+                    <mat-paginator [pageSizeOptions]="[100,500,1000]" showFirstLastButtons></mat-paginator>
+                  </div>
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+              </div>
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<router-outlet></router-outlet>

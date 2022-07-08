@@ -1,0 +1,515 @@
+<app-header></app-header>
+
+
+
+<div class="page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <!-- <nav class="sidebar sidebar-offcanvas" id="sidebar">
+
+		<ul id="accordion" class="accordion">
+  <li>
+    <div class="link"><a href="index.html"><i class="fa fa-tachometer"></i>Dashboard</a></div>
+  </li>
+  <li>
+    <div class="link"><a href="publisher_management.html"><i class="fa fa-code"></i>Publisher Management </a></div>
+  </li>
+
+	<li>
+	<div class="link"><a href="user_management.html"><i class="fa fa-code"></i>User Management </a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="category.html"><i class="fa fa-code"></i>Category</a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="sub_category.html"><i class="fa fa-code"></i>Sub-Category </a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="all_books.html"><i class="fa fa-code"></i>All Books </a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="#"><i class="fa fa-sign-out"></i>Log out</a></div>
+	</li>
+
+
+
+  <li>
+    <div class="link"><i class="fa fa-mobile"></i>Dropdown 1<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+      <li><a href="#">Menu 1</a></li>
+      <li><a href="#">Menu 2</a></li>
+      <li><a href="#">Menu 3</a></li>
+    </ul>
+  </li>
+  <li>
+    <div class="link"><i class="fa fa-globe"></i>Dropdown 2<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+      <li><a href="#">Menu 1</a></li>
+      <li><a href="#">Menu 2</a></li>
+      <li><a href="#">Menu 3</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+
+      </nav> -->
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="card">
+                <div class="card-body">
+
+
+                    <div class="titleSec">
+                        <!-- <button type="button" class="btn btn-primary">Add</button> -->
+                        <h2>Raise Ticket</h2>
+                    </div>
+
+                    <div class="alert alert-danger text-center p-5" role="alert" [hidden]="rental_date_ex">
+                       <h4 >Rental Pending</h4> 
+                      
+                      </div><br>
+                      <div class="alert alert-danger text-center p-5" role="alert" [hidden]="amc_date_ex">
+                        <h4>AMC Pending</h4> 
+                       </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+
+
+                            <form>
+
+
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Date</b></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control p-2" placeholder=""
+                                            name="date" id="itemdate" #date readonly value="{{this.now | date:'dd-MM-YYYY h:mm:ss a'}}"
+                                            >
+                                        <!-- <span  class="text-danger"
+                                        *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
+
+                                    </div>
+
+                                    <div class="col-sm-3"></div>
+
+                                </div>
+                                <br>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Client</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-10">
+
+                                        <!-- <select class="form-control select2" name="client" (click)="select_client(Client.value)" #Client>
+
+                                            <option value="">Select</option>
+                                            <option   *ngFor="let c of ctmdata" value="{{c.id}}">{{c.client_name}}</option>
+
+                                        </select> -->
+
+                                        <select class="form-control client select2" name="client" #Client >
+
+                                            <option value="">Select</option>
+                                            <option   *ngFor="let c of ctmdata" value="{{c.id}}">{{c.client_name}}</option>
+
+                                        </select>
+
+
+                                       <!-- <input list="browsers" name="browser" id="browser" class="form-control" #client placeholder="Select" (change)="select_client(client.value)">
+                                        <datalist id="browsers" >
+                                            <option *ngFor="let c of ctmdata">{{c.client_name}}</option>
+
+                                        </datalist> -->
+
+
+
+
+
+
+
+
+
+                                     <span  class="text-danger"
+                                    *ngIf="cl_val&&prevent_init_client">*Please select a client</span>
+
+
+                                    </div>
+
+                                </div>
+
+                                <br>
+                                <!-- <div class="form-group row">
+                                <div class="col-sm-1" >
+                                    <label><b> Address1</b></label>
+                                </div>
+
+                                <div class="col-sm-10" >
+                                    <input type="text" class="form-control" placeholder="Enter Address1 " name="cust_name"
+                                        id="itemname" required=""   #addddd1>
+
+                                        <span  class="text-danger"
+                                        *ngIf="upload&&!address1">*please Enter Address</span>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-1" >
+                                    <label><b> Address2</b></label>
+                                </div>
+
+                                <div class="col-sm-10" >
+                                    <input type="text" class="form-control" placeholder="Enter Address2 " name="cust_name"
+                                        id="itemname" required=""   #addddd2>
+
+                                </div>
+
+
+                            </div> -->
+
+                                <!-- <div class="form-group row">
+                                <div class="col-sm-1" >
+                                    <label ><b>Pin</b></label>
+                                </div>
+
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Pin" name="pin" id="pin"
+                                        required="" #pini (keypress)="preventNonNumericalInput($event)">
+                                </div>
+
+                                <span  class="text-danger"
+                                *ngIf="upload&&!pin">*please Enter Pin</span>
+                            </div>
+                              -->
+                              <div class="form-group row">
+
+                                <div class="col-sm-2">
+                                    <label><b>District</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder=""
+                                        name="district" id="itemdistrict" #district readonly value="{{this.district_name}}"
+                                        >
+                                    <!-- <span  class="text-danger"
+                                    *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
+
+                                </div>
+
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1">
+                                    <label><b>Client Type</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder="" name="clienttype"
+                                        id="itemclienttype" #clienttype readonly value="{{this.client_type}}">
+                                    <!-- <span  class="text-danger ml-3"
+                                    *ngIf="upload&&!email">*please Enter Email</span> -->
+
+
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+
+                                <div class="col-sm-2">
+                                    <label><b>Operational Mode</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder=""
+                                        name="text" id="itemoperationalmode" #operationalmode readonly
+                                        value="{{this.oprn_mode_id}}">
+                                    <!-- <span  class="text-danger"
+                                    *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
+
+                                </div>
+
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1">
+                                    <label><b>Working Hours</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder="" name="workinghours"
+                                        id="itemworkinghours" #workinghours readonly value="{{this.working_hrs}}">
+                                    <!-- <span  class="text-danger ml-3"
+                                    *ngIf="upload&&!email">*please Enter Email</span> -->
+
+
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+
+                                <div class="col-sm-2">
+                                    <label><b>AMC Upto</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder=""
+                                        name="amcupto" id="itemamcupto" #amcupto readonly
+                                        value="{{this.amc_upto | date:'dd/MM/YYYY'}}">
+                                    <!-- <span  class="text-danger"
+                                    *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
+
+                                </div>
+
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1">
+                                    <label><b>Rental Upto</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder="" name=""
+                                        id="itemrentalupto" #rentalupto readonly value="{{this.rental_upto | date:'dd/MM/YYYY'}}">
+                                    <!-- <span  class="text-danger ml-3"
+                                    *ngIf="upload&&!email">*please Enter Email</span> -->
+
+
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+
+                                <div class="col-sm-2">
+                                    <label><b>Phone No.</b>&nbsp;<span class="text-danger">*</span></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder=""
+
+                                        name="phone" id="itemphone" #phone (keypress)="preventNonNumericalInput($event)" (keyup)="prevent_null($event)" (change)="prevent_null($event)"
+
+
+                                      value="{{this.phone_no}}">
+                                    <span  class="text-danger"
+                                    *ngIf="phone_val&&prevent_init_phone">*Please enter a phone number</span>
+
+                                </div>
+
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1">
+                                    <label><b>Priority Status</b>&nbsp;<span class="text-danger">*</span></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <select class="form-control " name="module" #priority (click)="select_priority(priority.value)" (change)="select_priority(priority.value)">
+
+                                        <option value="">Select</option>
+                                        <!-- <option value="p.priority_id=='3'" selected>{{p.priority_mode}}</option> -->
+                                        <option *ngFor="let p of pmdata" value="{{p.priority_id}}" [selected]="p.priority_id == '3'">{{p.priority_mode}}</option>
+
+                                    </select>
+                                    <span  class="text-danger"
+                                *ngIf="prior_val&&prevent_init_priority">*Please select priority</span>
+
+
+                                </div>
+
+                            </div>
+                            <br>
+                                <!-- <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>District</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="company_type" #comp>
+
+                                            <option value="">Select</option>
+                                            <option value="P">Private Ltd</option>
+                                            <option value="R">Partnership</option>
+                                            <option value="I">Individual</option>
+                                            <option value="L">Public Ltd</option>
+                                            <option value="G">Govt.Organisation</option>
+                                            <option value="O">Others</option>
+
+                                        </select>
+                                         <span  class="text-danger"
+                                    *ngIf="upload&&!company">*please Enter Company type</span>
+
+
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+                                    <div class="col-sm-1">
+                                        <label><b>Client Type</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="company_type" #comp>
+
+                                            <option value="">Select</option>
+                                            <option value="P">Private Ltd</option>
+                                            <option value="R">Partnership</option>
+                                            <option value="I">Individual</option>
+                                            <option value="L">Public Ltd</option>
+                                            <option value="G">Govt.Organisation</option>
+                                            <option value="O">Others</option>
+
+                                        </select>
+                                         <span  class="text-danger"
+                                        *ngIf="upload&&!company">*please Enter Company type</span>
+
+
+                                    </div>
+
+
+                                </div> -->
+                                <br>
+
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Module</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control module select2" name="module" #module (change)="select_mm(module.value)">
+
+                                            <option value="">Select</option>
+                                            <option *ngFor="let m of moddata" value="{{m.module_id}}">{{m.module_type}}</option>
+
+
+                                        </select>
+                                        <span  class="text-danger"
+                                    *ngIf="mm_val&&prevent_init_module">*Please select module</span>
+
+
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Issue</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <textarea rows="5" type="text" class="form-control p-2" placeholder=" "
+
+                                            name="issue" id="itemissue" #issue (keyup)="prevent_null($event)"
+                                            (change)="prevent_null($event)"
+
+                                        ></textarea>
+                                         <span  class="text-danger"
+            *ngIf="issue_val&&prevent_init_issue">*Please provide the issue</span>
+
+                                    </div>
+                                </div><br>
+
+
+
+
+
+                              <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Remarks</b></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <!-- <textarea rows="5" type="text" class="form-control p-2" placeholder=" "
+                                          #remarks  name="remarks" id="itemremarks"></textarea> -->
+
+                                          <angular-editor [(ngModel)]="remarks" name="remarks" id="itemremarks" [config]="configEditor"></angular-editor>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+
+                                    <!-- <div class="col-sm-2" >
+                                    <label><b>Technical Contact</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter contact" name="tan" id="itemname"   #tana>
+
+
+
+                                    <span  class="text-danger ml-3"
+                                    *ngIf="upload&&!tan">*please Enter TAN</span>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row" >
+
+                                <div class="col-sm-1">
+                                    <label><b>Bank name</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Bank Name" name="bank_name"
+                                        id="itemname"   #banknn>
+
+                                         <span  class="text-danger"
+                                        *ngIf="upload&&!bank">*please Enter Bank name</span>
+                                </div>
+
+                                <div class="col-sm-3" ></div>
+                                <div class="col-sm-1" >
+                                    <label><b>Branch name</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Branch Name" name="branch_name"
+                                        id="itemname" #bran>
+
+                                        <span  class="text-danger ml-3"
+                                        *ngIf="upload&&!branch">*please Enter Branch name</span> -->
+                                    <!-- </div> -->
+
+                                </div>
+                                <!-- <div class="form-group row" >
+
+
+                                <div class="col-sm-1">
+                                    <label><b>Ac no</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Account Number" name="ac_no"
+                                        id="itemname"   #no>
+
+                                        < <span  class="text-danger"
+                                        *ngIf="upload&&!ac">*please Enter Ac Number</span>
+
+                                </div>
+                                <div class="col-sm-3" ></div>
+                                <div class="col-sm-1" >
+                                    <label><b>IFS code</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" placeholder="Enter IFS Code" name="ifs_code"
+                                        id="itemname"  #is>
+
+                                        <span  class="text-danger ml-3"
+                                        *ngIf="upload&&!ifs">*please Enter Ifsc</span>
+
+
+
+
+                                </div>
+                            </div>  -->
+                                <div class="form-group row mt-5">
+                                    <div class="col-sm-12 btnSubmitSec">
+                                        <input type="submit" class="btn btn-info" id="submit" name="submit" [disabled]="cl_val||mm_val||phone_val||issue_val||priority.value==''"
+                                            value="Submit" (click)="go_to_dashboard(date.value,Client.value,district.value,clienttype.value,operationalmode.value,workinghours.value,amcupto.value,rentalupto.value,phone.value,priority.value,module.value,issue.value)">
+                                            <button type="reset" class="btn btn-danger" id="cancel" name="cancel" (click)="clearfield()">Reset <i class="fa fa-refresh" [hidden]="spinshow"style="color:white;"></i><i class="fa fa-refresh fa-spin" [hidden]="!spinshow" style="color:white"></i></button>
+                                        <!-- <input type="reset" class="btn btn-info " id="Cancel" name="Cancel" value="Reset"> -->
+
+                                        <div id="snackbar"><i class="fa fa-exclamation-triangle" style="color:red"></i>
+                                            &nbsp; Insertion failed.Please try again after some time</div>
+                                    </div>
+
+                                </div>
+
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

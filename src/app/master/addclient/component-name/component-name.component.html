@@ -1,0 +1,611 @@
+<app-header></app-header>
+
+
+
+<div class="page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <!-- <nav class="sidebar sidebar-offcanvas" id="sidebar">
+		
+		<ul id="accordion" class="accordion">
+  <li>
+    <div class="link"><a href="index.html"><i class="fa fa-tachometer"></i>Dashboard</a></div>
+  </li>
+  <li>
+    <div class="link"><a href="publisher_management.html"><i class="fa fa-code"></i>Publisher Management </a></div>
+  </li>
+	
+	<li>
+	<div class="link"><a href="user_management.html"><i class="fa fa-code"></i>User Management </a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="category.html"><i class="fa fa-code"></i>Category</a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="sub_category.html"><i class="fa fa-code"></i>Sub-Category </a></div>
+	</li>
+			
+	<li>
+	<div class="link"><a href="all_books.html"><i class="fa fa-code"></i>All Books </a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="#"><i class="fa fa-sign-out"></i>Log out</a></div>
+	</li>
+			
+			
+			
+  <li>
+    <div class="link"><i class="fa fa-mobile"></i>Dropdown 1<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+      <li><a href="#">Menu 1</a></li>
+      <li><a href="#">Menu 2</a></li>
+      <li><a href="#">Menu 3</a></li>
+    </ul>
+  </li>
+  <li>
+    <div class="link"><i class="fa fa-globe"></i>Dropdown 2<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+      <li><a href="#">Menu 1</a></li>
+      <li><a href="#">Menu 2</a></li>
+      <li><a href="#">Menu 3</a></li>
+    </ul>
+  </li>
+</ul>
+		
+       
+		
+      </nav> -->
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="card">
+                <div class="card-body">
+
+
+                    <div class="titleSec">
+                        <!-- <button type="button" class="btn btn-primary">Add</button> -->
+                        <h2>Edit Client</h2>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+
+
+                            <form>
+
+
+
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Client Code</b></label>
+                                    </div>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control p-2" placeholder=" " value="{{item}}"
+                                            name="cust_name" id="itemcode" required="" #code11 readonly>
+                                         <!-- <span class="text-danger"
+                                        *ngIf="namevalid">*Please Enter Name</span> -->
+                                        
+
+                                    </div>
+
+
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Client Name</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control p-2" placeholder=" " value="{{client_name}}"
+                                            name="cust_name" id="itemname" required="" #name11 (keyup)="prevent_null($event)">
+
+
+                                          <span class="text-danger"
+                                        *ngIf="namevalid&&prevent_init_name">*Please Enter Name</span> 
+
+
+                                        
+
+                                    </div>
+
+
+                                </div>
+                                <br>
+                                <!-- <div class="form-group row">
+                                <div class="col-sm-1" >
+                                    <label><b> Address1</b></label>
+                                </div>
+
+                                <div class="col-sm-10" >
+                                    <input type="text" class="form-control" placeholder="Enter Address1 " name="cust_name"
+                                        id="itemname" required=""   #addddd1>
+                                      
+                                        <span  class="text-danger"
+                                        *ngIf="upload&&!address1">*please Enter Address</span>
+                                      
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-1" >
+                                    <label><b> Address2</b></label>
+                                </div>
+
+                                <div class="col-sm-10" >
+                                    <input type="text" class="form-control" placeholder="Enter Address2 " name="cust_name"
+                                        id="itemname" required=""   #addddd2>
+                                      
+                                </div>
+                               
+
+                            </div> -->
+
+                                <!-- <div class="form-group row">
+                                <div class="col-sm-1" >
+                                    <label ><b>Pin</b></label>
+                                </div>
+
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Pin" name="pin" id="pin"
+                                        required="" #pini (keypress)="preventNonNumericalInput($event)">
+                                </div>
+                              
+                                <span  class="text-danger"
+                                *ngIf="upload&&!pin">*please Enter Pin</span> 
+                            </div>
+                              -->
+
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>District</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="district" id="district" #dist (click)="select_district(dist.value)">
+
+                                            <!-- <option value="{{distselect}}">{{d_data}}</option> -->
+                                            <option value="">Select District</option>
+                                            <option *ngFor="let d of distdata" value="{{d.id}}" [selected]="getdist == d.id">{{d.name}}</option>
+                                            
+
+                                        </select>
+                                         <!-- <span  class="text-danger"
+                                    *ngIf="distvalid">*Please Select District</span> -->
+
+
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+
+
+                                    <div class="col-sm-1">
+                                        <label><b>Block</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control">
+
+                                            <option value="">Select</option>
+                                           
+                                            <option value="1">abc</option>
+                                            <option value="2">xyz</option>
+                                            <option value="3">tyu</option>
+                                            <option value="4">uyt</option>
+                                        </select>
+                                       
+
+
+                                    </div>
+
+                                    
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Operational Mode</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control " name="op" id="op" #comp (click)="select_operation(comp.value)">
+
+                                            <!-- <option value="{{opselect}}">{{op_data}}</option> -->
+                                            <option value="">Select</option>
+                                            <option *ngFor="let o of opdata" value="{{o.oprn_id}}" [selected]="o.oprn_id == opid">{{o.oprn_mode}}</option>
+                                            
+                                        </select>
+                                        <!-- <span  class="text-danger"
+                                    *ngIf="oprnvalid">*Please Select Operational Mode</span> -->
+
+
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-1">
+                                        <label><b>Client Type</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="ctm" id="ctm" #ctm (click)="select_client_type(ctm.value)">
+
+                                            <!-- <option value="{{clidselect}}">{{client_data}}</option> -->
+                                            <option value="">Select</option>
+                                            <option *ngFor="let c of ctmdata" value="{{c.client_id}}" [selected]="c.client_id == clientid">{{c.client_type}}</option>
+                                        </select>
+                                         <!-- <span  class="text-danger"
+                                        *ngIf="ctmvalid">*Please Select Client Type</span>  -->
+
+
+                                    </div>
+
+
+
+                                  
+
+
+                                </div>
+                                <br>
+
+                                <div class="form-group row">
+
+                                     
+                                    <div class="col-sm-2">
+                                        <label><b>DCCB</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control">
+
+                                            <option value="">Select</option>
+                                           
+                                            <option value="1">abc</option>
+                                            <option value="2">xyz</option>
+                                            <option value="3">tyu</option>
+                                            <option value="4">uyt</option>
+                                        </select>
+                                       
+
+
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                      
+                                    <div class="col-sm-1">
+                                        <label><b>Branch</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control">
+
+                                            <option value="">Select</option>
+                                           
+                                            <option value="1">abc</option>
+                                            <option value="2">xyz</option>
+                                            <option value="3">tyu</option>
+                                            <option value="4">uyt</option>
+                                        </select>
+                                       
+
+
+                                    </div>
+
+                                    
+
+
+
+
+                                </div><br>
+                                
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Address</b></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <textarea rows="5" type="text" class="form-control p-2" placeholder=""
+                                          #address  name="remarks" id="itemaddress" (keyup)="prevent_null($event)">{{client_addr}}</textarea>
+                                          <!-- <span class="text-danger"
+                                          *ngIf="addressvalid">*Please Enter Address</span>-->
+                                        </div>
+                                    <div class="col-sm-3"></div>
+
+
+                                    <!-- <div class="col-sm-2" >
+                                    <label><b>Technical Contact</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter contact" name="tan" id="itemname"   #tana>
+                                    
+
+                                    
+                                    <span  class="text-danger ml-3"
+                                    *ngIf="upload&&!tan">*please Enter TAN</span> 
+                                   
+                                </div>
+                               
+                            </div>
+
+                            <div class="form-group row" >
+
+                                <div class="col-sm-1">
+                                    <label><b>Bank name</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Bank Name" name="bank_name"
+                                        id="itemname"   #banknn>
+                                      
+                                         <span  class="text-danger"
+                                        *ngIf="upload&&!bank">*please Enter Bank name</span> 
+                                </div>
+
+                                <div class="col-sm-3" ></div>
+                                <div class="col-sm-1" >
+                                    <label><b>Branch name</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Branch Name" name="branch_name"
+                                        id="itemname" #bran>
+                                        
+                                        <span  class="text-danger ml-3"
+                                        *ngIf="upload&&!branch">*please Enter Branch name</span> -->
+                                    <!-- </div> -->
+
+                                </div>
+                                <br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Technical Contact</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" placeholder="" value="{{tech_person}}"
+                                            name="contact" id="itemcontact" #contact
+                                            >
+                                        <!-- <span  class="text-danger"
+            *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
+
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Designation</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" placeholder=" "
+                                            name="designation" id="itemdesig" #designation value="{{tech_designation}}"
+                                            >
+                                        <!-- <span  class="text-danger"
+            *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
+
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Mobile Number</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2"  placeholder=" " value="{{phone_no}}"
+                                            name="mobile_no" id="itemphone" #phone pattern="[0-9]*"
+                                            (keypress)="preventNonNumericalInput($event)" (keyup)="prevent_null($event)">
+
+
+                                          <span  class="text-danger"
+                                        *ngIf="phonevalid&&prevent_init_phone">*Please Enter Mobile Number</span>  
+
+
+
+                                    </div>
+
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-1">
+                                        <label><b>Email</b></label> 
+                                    </div>
+                                    <div class="col-sm-3">
+<!-- <<<<<<< HEAD
+                                        <input type="email" class="form-control" placeholder="" name="email" value="{{mail}}"
+                                            id="itememail" #em >
+======= -->
+
+                                        <input type="email" class="form-control p-2" placeholder="" name="email" value="{{mail}}"
+                                            id="itememail" #em (change)="check_email_validity($event)" >
+
+
+                                        <!-- <span  class="text-danger ml-3"
+                                        *ngIf="upload&&!email">*please Enter Email</span> -->
+                                        <!-- <span class="text-danger" *ngIf="email_null">*Please Enter Email</span> 
+                                        <span class="text-danger" *ngIf="notavalidemail">{{confirm_email}}</span>  -->
+
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Working Hours</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" placeholder=""
+                                            name="workinghours" id="itemhours" #workinghours value="{{working_hrs}}"
+                                            >
+                                    </div>
+
+                                        <div class="col-sm-3"></div>
+                                        <div class="col-sm-1"><label><b>Schema Name</b></label></div>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control p-2" name="schema"
+                                            id="schema_Name" #schema_name value="{{Schema_Name}}">
+                                        </div>
+
+
+                                </div><br>
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Support Mode</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="radio" id="AMC" name="Support" value="A" #amcrentalradio (click)="select_mode($event,'Amc')">
+                                        <label for="AMC"> AMC</label>
+                                        <input type="radio" id="Rental" name="Support" value="R" #amcrentalradio (click)="select_mode($event,'Rental')" class="ml-3">
+                                        <label for="Rental"> Rental</label><br>
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>AMC upto</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="date" class="form-control p-2" placeholder="" value="{{amcdate}}"
+                                           [disabled]="amc_rental_Check" name="amcupto" id="itemamc" #amcupto (change)="change_amcupto(amcupto.value)"
+                                            >
+                                        <!-- <span  class="text-danger"
+                                        *ngIf="!amcvalid">*Please Enter a Date</span>  -->
+
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Rental upto</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="date" class="form-control p-2" placeholder="" value="{{rentaldate}}"
+                                            name="rentalupto" id="itemrental" #rentalupto (change)="change_rentalupto(rentalupto.value)"
+                                            [disabled]="!amc_rental_Check">
+                                            <!-- <span  class="text-danger"
+                                        *ngIf="!rentalvalid">*Please Enter a Date</span>  -->
+                                        <!-- <span  class="text-danger"
+                                        *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
+
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Status</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <!-- <input type="radio" id="a" name="Status" value="A" #activeinactiveradio (click)="select_status()">
+                                        <label for="a"> Active</label><br>
+                                        <input type="radio" id="i" name="Status" value="D" #activeinactiveradio (click)="select_status()">
+                                        <label for="i"> Inactive</label><br> -->
+
+
+                                        <input type="radio" id="a" name="Status" value="A" #activeinactiveradio (click)="select_status()" [checked]="active1">
+                                        <label for="a"> Active</label> 
+                                        <input type="radio" id="i" name="Status" value="D" #activeinactiveradio (click)="select_status()" [checked]="active2" class="ml-3">
+                                        <label for="i"> Inactive</label><br>
+
+
+
+
+
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Remarks</b></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <textarea rows="5" type="text" class="form-control p-2" placeholder=""
+                                        #remarks    name="remarks" id="itemremarks">{{remarks1}}</textarea>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+
+                                    <!-- <div class="col-sm-2" >
+                                    <label><b>Technical Contact</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter contact" name="tan" id="itemname"   #tana>
+                                    
+
+                                    
+                                    <span  class="text-danger ml-3"
+                                    *ngIf="upload&&!tan">*please Enter TAN</span> 
+                                   
+                                </div>
+                               
+                            </div>
+
+                            <div class="form-group row" >
+
+                                <div class="col-sm-1">
+                                    <label><b>Bank name</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Bank Name" name="bank_name"
+                                        id="itemname"   #banknn>
+                                      
+                                         <span  class="text-danger"
+                                        *ngIf="upload&&!bank">*please Enter Bank name</span> 
+                                </div>
+
+                                <div class="col-sm-3" ></div>
+                                <div class="col-sm-1" >
+                                    <label><b>Branch name</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Branch Name" name="branch_name"
+                                        id="itemname" #bran>
+                                        
+                                        <span  class="text-danger ml-3"
+                                        *ngIf="upload&&!branch">*please Enter Branch name</span> -->
+                                    <!-- </div> -->
+
+                                </div>
+                                <!-- <div class="form-group row" >
+
+
+                                <div class="col-sm-1">
+                                    <label><b>Ac no</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Account Number" name="ac_no"
+                                        id="itemname"   #no>
+                                        
+                                        < <span  class="text-danger"
+                                        *ngIf="upload&&!ac">*please Enter Ac Number</span> 
+                                      
+                                </div>
+                                <div class="col-sm-3" ></div>
+                                <div class="col-sm-1" >
+                                    <label><b>IFS code</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" placeholder="Enter IFS Code" name="ifs_code"
+                                        id="itemname"  #is>
+                                       
+                                        <span  class="text-danger ml-3"
+                                        *ngIf="upload&&!ifs">*please Enter Ifsc</span> 
+
+                                      
+                                       
+                                      
+                                </div>
+                            </div>  -->
+                                <div class="form-group row mt-5">
+                                    <div class="col-sm-12 btnSubmitSec">
+                                        <input type="submit" class="btn btn-info" id="submit" [disabled]="done" name="submit" (click)="send_data(code11.value,name11.value,dist.value,comp.value,ctm.value,address.value,contact.value,designation.value,phone.value,em.value,amcupto.value,rentalupto.value,remarks.value,amcrentalradio.value,activeinactiveradio.value,workinghours.value,schema_name.value)"
+                                            value="Update">
+                                            <!-- <button type="reset" class="btn btn-danger" id="cancel" name="cancel" (click)="clearfield()">Reset</button> -->
+                                        <!-- <input type="reset" class="btn btn-info " id="Cancel" name="Cancel" value="Reset"> -->
+                                        <!-- <span *ngIf="done" class="text-success">Client Data updated successfully!!</span>   -->
+                                    </div>
+                                    <div id="snackbar"><i class="fa fa-times-circle" style="color:red"></i>&nbsp; Updation failed.Please try again after some time</div>
+                                </div>
+
+                                <div id="snackbar"><i class="fa fa-times-circle" style="color:red"></i>&nbsp; Updation failed...</div>
+
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

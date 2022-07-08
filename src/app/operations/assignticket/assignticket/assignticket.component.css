@@ -1,0 +1,41 @@
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    width:inherit;
+    border: 1px solid transparent;
+    border-radius: .35rem;
+  }
+
+
+  /* .mat-header-cell{
+ 
+    justify-content: center;
+  }
+  .mat-sort-header{
+  
+    justify-content: flex-end;
+  }
+
+   */
+.form-control{
+    width:90% !important;
+}
+
+
+/* For Tool tip Class */
+
+
+
+::ng-deep .mat-tooltip {
+  color:white;
+  background-color: #282a3c;
+ text-overflow: inherit;
+}
+/* .custom-tooltip{
+  color:white;
+  background-color: crimson;
+
+} */
+.my-class{
+  color:green;
+}

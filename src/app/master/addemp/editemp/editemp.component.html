@@ -1,0 +1,179 @@
+<app-header></app-header>
+
+
+<div class="page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="card">
+                <div class="card-body">
+
+
+                    <div class="titleSec">
+                        <!-- <button type="button" class="btn btn-primary">Add</button> -->
+                        <h2>Edit Employee</h2>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+
+                            <form>
+
+
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label> Employee Code</label>
+                                    </div>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control p-2" placeholder="  " value="{{item1}}"
+                                            name="cust_code" id="itemcode" required="" #ecode readonly>
+
+                                        <!-- <span class="text-danger" *ngIf="upload&&!name">*please Enter Name</span> -->
+
+                                    </div>
+
+                                    <!-- <span [hidden]="name" >*please Enter Your Name</span> -->
+                                    <!-- <span class="text-danger" style="padding-left: 120px;">*please Enter Your Name</span> -->
+
+                                </div><br>
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Name</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control p-2" placeholder="   " value="{{item2}}"
+                                            name="cust_name" id="itemname" required="" #ename (keyup)="prevent_null($event)">
+                                            <span class="text-danger" *ngIf="name">*Please Enter Name</span>
+                                        <!-- <span class="text-danger" *ngIf="upload&&!name">*please Enter Name</span> -->
+
+                                    </div>
+
+                                    <!-- <span [hidden]="name" >*please Enter Your Name</span> -->
+                                    <!-- <span class="text-danger" style="padding-left: 120px;">*please Enter Your Name</span> -->
+
+                                </div>
+
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Phone No.</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" placeholder="" name="phone" value="{{item_phone}}"
+                                            id="itemph" #phone (keypress)="preventNonNumericalInput($event)" (keyup)="prevent_null($event)">
+                                        <!-- <span class="text-danger" *ngIf="upload&&!gst1">*please Enter GST</span> -->
+                                        <span class="text-danger" *ngIf="ph">*Please Enter Phone No.(Only numeric values)</span>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+                                    <div class="col-sm-1">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" placeholder="" value="{{item_email}}"
+                                            name="email" id="itememail" readonly #email (change)="check_email_validity($event)" (keyup)="prevent_null($event)">
+                                            <span class="text-danger" *ngIf="notavalidemail">{{confirm_email}}</span>
+
+                                            <span class="text-danger" *ngIf="email_null">*Please Enter Email</span>
+                                        <!-- <span class="text-danger ml-3" *ngIf="upload&&!pan">*please Enter PAN</span> -->
+
+                                        <!-- <span [hidden]="pan" >*please Enter PAN number</span> -->
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-group row">
+
+
+                                 
+                                    <!-- <span [hidden]="company" 
+                            >*please Enter Company type</span> -->
+
+
+                                </div>
+<br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label>Designation</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" placeholder="" value="{{item_desig}}"
+                                            name="designation" id="itemdesignation" #designation>
+
+                                        <!-- <span  class="text-danger"
+                                   *ngIf="upload&&!bank">*please Enter Bank name</span> -->
+
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                    
+
+                                </div>
+<br>
+
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label>Remarks</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <textarea rows="5" type="text" class="form-control p-2" placeholder=" "
+                                            name="remarks" id="itemremarks" #remarks
+                                            >{{item_remarks}}</textarea>
+                                        <!-- <span class="text-danger" *ngIf="upload&&!mobile">*please Enter Mobile -->
+                                            <!-- Number</span> -->
+
+
+                                    </div>
+
+                                    <div class="col-sm-3"></div>
+                                    
+                                </div>
+
+
+
+                                
+                                <div class="form-group row mt-5">
+                                    <div class="col-sm-12 btnSubmitSec">
+                                        <input type="submit" class="btn btn-info" id="submit" name="submit" [disabled]="disable_button"
+                                            value="Update" (click)="send_data(ecode.value,ename.value,phone.value,email.value,designation.value,remarks.value)"
+                >
+
+
+
+<!-- 
+                                            <input type="submit" class="btn btn-info" id="submit" name="submit"
+                                            value="Submit"
+                                            > -->
+
+                                            <div id="snackbar"><i class="fa fa-times-circle" style="color:red"></i>&nbsp; Updation failed.Please try again after some time</div>
+                                    </div>
+                                    <!-- <span class="alert text-success" *ngIf="done">{{msg}}</span>  -->
+                                </div>
+
+
+
+                            </form>
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

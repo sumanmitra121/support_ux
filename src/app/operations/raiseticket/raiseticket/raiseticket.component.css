@@ -1,0 +1,42 @@
+td, th {
+    width: 12%;
+  }
+  .modal{
+    margin:0 0 0 35%;
+  }
+
+  .alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    width:inherit;
+    border: 1px solid transparent;
+    border-radius: .35rem;
+  }
+
+
+  .make-gold {
+    background-color: #FFFF00;
+    text-align: center;
+  }
+  .make-medium{
+    background-color: #FFA500;
+    text-align: center;
+  
+  }
+  
+  .make-high{
+    background-color: #FF0000;
+    text-align: center;
+  }
+  .make-critical{
+  background-color: #8B0000;
+  text-align: center;
+  }
+  .make-Customer{
+   text-align: center;
+  }
+
+
+ 
+
+

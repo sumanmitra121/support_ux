@@ -1,0 +1,53 @@
+#capt_login{
+    text-align: center;
+    height:50px;
+    width: 150px;
+    background-color: antiquewhite;
+    -webkit-text-stroke: 1px rgb(40, 83, 23);
+     font-style: italic;
+      font-size:larger;
+      font-weight: 200;
+       letter-spacing: 7px;
+       text-orientation:initial;
+       font-family: 'Noto Serif', 'serif';
+      
+ }
+ .alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+  
+    border: 1px solid transparent;
+    border-radius: .35rem;
+  }
+
+input [type="checkbox"]
+{
+    vertical-align:middle;
+}
+
+#refresh{
+  color:rgb(7, 25, 32);
+  cursor: pointer;
+ 
+}
+#refresh:active {
+  -webkit-animation: spin 1 0.4s linear;
+  -moz-animation: spin 1 0.4s linear;
+  animation:spin 1 0.4s linear;
+}
+@-webkit-keyframes spin {
+   0%{-webkit-transform: rotate(0deg);}
+   100%{-webkit-transform: rotate(3600deg);}
+}
+@-moz-keyframes spin {
+  0%{-webkit-transform: rotate(0deg);}
+  100%{-webkit-transform: rotate(3600deg);}
+}
+@keyframes spin {
+  0%{-webkit-transform: rotate(0deg);}
+  100%{-webkit-transform: rotate(360deg);}
+
+}
+
+    
+  

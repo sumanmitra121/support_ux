@@ -1,0 +1,498 @@
+<app-header></app-header>
+
+
+
+<div class="page-body-wrapper">
+    <app-sidebar></app-sidebar>
+    <!-- <nav class="sidebar sidebar-offcanvas" id="sidebar">
+		
+		<ul id="accordion" class="accordion">
+  <li>
+    <div class="link"><a href="index.html"><i class="fa fa-tachometer"></i>Dashboard</a></div>
+  </li>
+  <li>
+    <div class="link"><a href="publisher_management.html"><i class="fa fa-code"></i>Publisher Management </a></div>
+  </li>
+	
+	<li>
+	<div class="link"><a href="user_management.html"><i class="fa fa-code"></i>User Management </a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="category.html"><i class="fa fa-code"></i>Category</a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="sub_category.html"><i class="fa fa-code"></i>Sub-Category </a></div>
+	</li>
+			
+	<li>
+	<div class="link"><a href="all_books.html"><i class="fa fa-code"></i>All Books </a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="#"><i class="fa fa-sign-out"></i>Log out</a></div>
+	</li>
+			
+			
+			
+  <li>
+    <div class="link"><i class="fa fa-mobile"></i>Dropdown 1<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+      <li><a href="#">Menu 1</a></li>
+      <li><a href="#">Menu 2</a></li>
+      <li><a href="#">Menu 3</a></li>
+    </ul>
+  </li>
+  <li>
+    <div class="link"><i class="fa fa-globe"></i>Dropdown 2<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+      <li><a href="#">Menu 1</a></li>
+      <li><a href="#">Menu 2</a></li>
+      <li><a href="#">Menu 3</a></li>
+    </ul>
+  </li>
+</ul>
+		
+       
+		
+      </nav> -->
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="card">
+                <div class="card-body">
+
+
+                    <div class="titleSec">
+                        <!-- <button type="button" class="btn btn-primary">Add</button> -->
+                        <h2>Add Client</h2>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+
+
+                            <form>
+
+
+
+
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Client Name</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control p-2" 
+                                            name="cust_name" id="itemname" required="" #name11 (keyup)="prevent_null($event)" (change)="prevent_null($event)">
+                                         <span class="text-danger"
+                                        *ngIf="namevalid&&prevent_init_name">*Please Enter Name</span>
+                                        
+
+                                    </div>
+
+
+                                </div>
+                                <br>
+                                <!-- <div class="form-group row">
+                                <div class="col-sm-1" >
+                                    <label><b> Address1</b></label>
+                                </div>
+
+                                <div class="col-sm-10" >
+                                    <input type="text" class="form-control" placeholder="Enter Address1 " name="cust_name"
+                                        id="itemname" required=""   #addddd1>
+                                      
+                                        <span  class="text-danger"
+                                        *ngIf="upload&&!address1">*please Enter Address</span>
+                                      
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-1" >
+                                    <label><b> Address2</b></label>
+                                </div>
+
+                                <div class="col-sm-10" >
+                                    <input type="text" class="form-control" placeholder="Enter Address2 " name="cust_name"
+                                        id="itemname" required=""   #addddd2>
+                                      
+                                </div>
+                               
+
+                            </div> -->
+
+                                <!-- <div class="form-group row">
+                                <div class="col-sm-1" >
+                                    <label ><b>Pin</b></label>
+                                </div>
+
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Pin" name="pin" id="pin"
+                                        required="" #pini (keypress)="preventNonNumericalInput($event)">
+                                </div>
+                              
+                                <span  class="text-danger"
+                                *ngIf="upload&&!pin">*please Enter Pin</span> 
+                            </div>
+                              -->
+
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>District</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="district" id="district" #dist (click)="select_district(dist.value)" (change)="select_district(dist.value)">
+
+                                            <option value="">Select</option>
+                                            <option *ngFor="let d of distdata" value="{{d.id}}">{{d.name}}</option>
+                                            
+
+                                        </select>
+                                         <span  class="text-danger"
+                                    *ngIf="distvalid&&prevent_init_dist">*Please Select District</span>
+
+
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+                                    
+                                    <div class="col-sm-1">
+                                        <label><b>Block</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control">
+
+                                            <option value="">Select</option>
+                                           
+                                            <option value="1">abc</option>
+                                            <option value="2">xyz</option>
+                                            <option value="3">tyu</option>
+                                            <option value="4">uyt</option>
+                                        </select>
+                                       
+
+
+                                    </div>
+
+
+                                  
+
+
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Operational Mode</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="op" id="op" #comp (click)="select_operation(comp.value)" (change)="select_operation(comp.value)">
+
+                                            <option value="">Select</option>
+                                            <option value="{{op.oprn_id}}" *ngFor="let op of opdata">{{op.oprn_mode}}</option>
+                                            
+                                        </select>
+                                        <span  class="text-danger"
+                                    *ngIf="oprnvalid&&prevent_init_oprn">*Please Select Operational Mode</span>
+
+
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+
+                                    <div class="col-sm-1">
+                                        <label><b>Client Type</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control" name="ctm" id="ctm" #ctm (click)="select_client_type(ctm.value)" (change)="select_client_type(ctm.value)">
+
+                                            <option value="">Select</option>
+                                           
+                                            <option value="{{c.client_id}}" *ngFor="let c of ctmdata">{{c.client_type}}</option>
+                                        </select>
+                                         <span  class="text-danger"
+                                        *ngIf="ctmvalid&&prevent_init_ctm">*Please Select Client Type</span> 
+
+
+                                    </div>
+
+                                  
+
+
+                                </div>
+                                <br>
+
+                                <div class="form-group row">
+
+                                     
+                                    <div class="col-sm-2">
+                                        <label><b>DCCB</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control">
+
+                                            <option value="">Select</option>
+                                           
+                                            <option value="1">abc</option>
+                                            <option value="2">xyz</option>
+                                            <option value="3">tyu</option>
+                                            <option value="4">uyt</option>
+                                        </select>
+                                       
+
+
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                      
+                                    <div class="col-sm-1">
+                                        <label><b>Branch</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <select class="form-control">
+
+                                            <option value="">Select</option>
+                                           
+                                            <option value="1">abc</option>
+                                            <option value="2">xyz</option>
+                                            <option value="3">tyu</option>
+                                            <option value="4">uyt</option>
+                                        </select>
+                                       
+
+
+                                    </div>
+
+                                    
+
+
+
+
+                                </div><br>
+
+
+
+                                
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Address</b></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <textarea rows="5" type="text p-2" class="form-control p-2"
+                                          #address  name="remarks" id="itemaddress"></textarea>
+                                          <!-- <span class="text-danger"
+                                          *ngIf="addressvalid">*Please Enter Address</span> -->
+                                        </div>
+                                    <div class="col-sm-3"></div>
+
+
+                                    <!-- <div class="col-sm-2" >
+                                    <label><b>Technical Contact</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter contact" name="tan" id="itemname"   #tana>
+                                    
+
+                                    
+                                    <span  class="text-danger ml-3"
+                                    *ngIf="upload&&!tan">*please Enter TAN</span> 
+                                   
+                                </div>
+                               
+                            </div>
+
+                            <div class="form-group row" >
+
+                                <div class="col-sm-1">
+                                    <label><b>Bank name</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Bank Name" name="bank_name"
+                                        id="itemname"   #banknn>
+                                      
+                                         <span  class="text-danger"
+                                        *ngIf="upload&&!bank">*please Enter Bank name</span> 
+                                </div>
+
+                                <div class="col-sm-3" ></div>
+                                <div class="col-sm-1" >
+                                    <label><b>Branch name</b></label>
+                                </div>
+                                <div class="col-sm-3" >
+                                    <input type="text" class="form-control" placeholder="Enter Branch Name" name="branch_name"
+                                        id="itemname" #bran>
+                                        
+                                        <span  class="text-danger ml-3"
+                                        *ngIf="upload&&!branch">*please Enter Branch name</span> -->
+                                    <!-- </div> -->
+
+                                </div>
+                                <br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Technical Contact</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" 
+                                            name="contact" id="itemcontact" #contact
+                                            >
+                                        <!-- <span  class="text-danger"
+            *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
+
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Designation</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" 
+                                            name="designation" id="itemdesig" #designation
+                                            >
+                                        <!-- <span  class="text-danger"
+            *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
+
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Mobile Number</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" 
+                                            name="mobile_no" id="itemphone" #phone pattern="[0-9]*"
+                                            (keypress)="preventNonNumericalInput($event)" (keyup)="prevent_null($event)" (change)="prevent_null($event)">
+                                         <span  class="text-danger"
+                                        *ngIf="phonevalid&&prevent_init_phone">*Please Enter Mobile Number</span> 
+
+                                    </div>
+
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-1">
+                                        <label><b>Email</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="email" class="form-control p-2" name="email"
+                                            id="itememail" #em (change)="check_email_validity($event)">
+                                        <!-- <span  class="text-danger ml-3"
+                                        *ngIf="upload&&!email">*please Enter Email</span> -->
+                                        <!-- <span class="text-danger" *ngIf="email_null">*Please Enter Email</span>  -->
+                                        <span class="text-danger" *ngIf="notavalidemail&&prevent_init_email">{{confirm_email}}</span> 
+
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Working Hours</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" placeholder=""
+                                            name="workinghours" id="itemhours" #workinghours
+                                            >
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-1"> <label><b>Schema Name</b></label></div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" name="schema"
+                                            id="schema_Name" #schema_name>
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Support Mode</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="radio" id="AMC" name="Support" checked value="A" #amcrentalradio (click)="select_mode($event,'AMC')">
+                                        <label for="AMC"> AMC</label>
+                                        <input type="radio" id="Rental" name="Support" value="R" #amcrentalradio (click)="select_mode($event,'Rental')" class="ml-2">
+                                        <label for="Rental"> Rental</label>
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>AMC upto</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="date" class="form-control p-2" placeholder=""
+                                            name="amcupto" id="itemamc" #amcupto 
+                                            [disabled]="amc_date">
+                                        <!-- <span  class="text-danger"
+                                        *ngIf="!amcvalid">*Please Enter a Date</span>  -->
+
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Rental upto</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="date" class="form-control p-2" placeholder=""
+                                            name="rentalupto" id="itemrental" #rentalupto 
+                                            [disabled]="!amc_date" >
+                                            <!-- <span  class="text-danger"
+                                        *ngIf="!rentalvalid">*Please Enter a Date</span>  -->
+                                        <!-- <span  class="text-danger"
+                                        *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
+
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Status</b>&nbsp;<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="radio" id="a" name="Status" value="A" #activeinactiveradio (click)="select_status()">
+                                        <label for="a"> Active</label>
+                                        <input type="radio" id="i" name="Status" value="D" #activeinactiveradio (click)="select_status()" class="ml-3">
+                                        <label for="i"> Inactive</label>
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Remarks</b></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <textarea rows="5" type="text" class="form-control p-2" 
+                                        #remarks    name="remarks" id="itemremarks"></textarea>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                                <div class="form-group row mt-5">
+                                    <div class="col-sm-12 btnSubmitSec">
+
+                                        <input type="submit" class="btn btn-info" id="submit" name="submit" [disabled]="namevalid||phonevalid||status||ctmvalid||oprnvalid||distvalid||mode_select||notavalidemail" (click)="send_data(name11.value,dist.value,comp.value,ctm.value,address.value,contact.value,designation.value,phone.value,em.value,amcupto.value,rentalupto.value,remarks.value,amcrentalradio.value,activeinactiveradio.value,workinghours.value,schema_name.value)"
+                                            value="Submit">
+                                            <button type="reset" class="btn btn-danger" id="cancel" name="cancel" (click)="clearfield()">Reset <i class="fa fa-refresh" [hidden]="spinshow"style="color:white;"></i><i class="fa fa-refresh fa-spin" [hidden]="!spinshow" style="color:white"></i></button>
+                                        <!-- <input type="reset" class="btn btn-info " id="Cancel" name="Cancel" value="Reset"> -->
+                                       &nbsp; <span *ngIf="done" class="text-success">Client Data inserted successfully!!</span> 
+
+                                       <div id="snackbar"><i class="fa fa-times-circle" style="color:red"></i>&nbsp; Insertion failed.Please try again after some time</div>
+                                    </div>
+                                   
+                                </div>
+
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

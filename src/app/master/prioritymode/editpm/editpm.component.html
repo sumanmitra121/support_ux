@@ -1,0 +1,124 @@
+<app-header></app-header>
+
+
+
+<div class="page-body-wrapper">
+    <app-sidebar></app-sidebar>
+	<!-- <nav class="sidebar sidebar-offcanvas" id="sidebar">
+		
+		<ul id="accordion" class="accordion">
+  <li>
+    <div class="link"><a href="index.html"><i class="fa fa-tachometer"></i>Dashboard</a></div>
+  </li>
+  <li>
+    <div class="link"><a href="publisher_management.html"><i class="fa fa-code"></i>Publisher Management </a></div>
+  </li>
+	
+	<li>
+	<div class="link"><a href="user_management.html"><i class="fa fa-code"></i>User Management </a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="category.html"><i class="fa fa-code"></i>Category</a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="sub_category.html"><i class="fa fa-code"></i>Sub-Category </a></div>
+	</li>
+			
+	<li>
+	<div class="link"><a href="all_books.html"><i class="fa fa-code"></i>All Books </a></div>
+	</li>
+
+	<li>
+	<div class="link"><a href="#"><i class="fa fa-sign-out"></i>Log out</a></div>
+	</li>
+			
+			
+			
+  <li>
+    <div class="link"><i class="fa fa-mobile"></i>Dropdown 1<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+      <li><a href="#">Menu 1</a></li>
+      <li><a href="#">Menu 2</a></li>
+      <li><a href="#">Menu 3</a></li>
+    </ul>
+  </li>
+  <li>
+    <div class="link"><i class="fa fa-globe"></i>Dropdown 2<i class="fa fa-chevron-down"></i></div>
+    <ul class="submenu">
+      <li><a href="#">Menu 1</a></li>
+      <li><a href="#">Menu 2</a></li>
+      <li><a href="#">Menu 3</a></li>
+    </ul>
+  </li>
+</ul>
+		
+       
+		
+      </nav> -->
+	
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="card">
+           <div class="card-body">
+             
+             
+             <div class="titleSec">
+               <!-- <button type="button" class="btn btn-primary">Add</button> -->
+             <h2>Edit Priority Module</h2> 
+             </div>
+
+
+             
+            <div class="row">
+               <div class="col-sm-12"> 
+                   <form>
+                            
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                          <label><b>SL No.</b></label>
+                        </div>
+                         <div class="col-sm-6">
+                          <input type="text" class="form-control p-2" placeholder=" " value="{{item1}}"  id="itemsl"  #item_sl readonly>
+                           <!-- <input type="text"  class="form-control" placeholder=""   id="id1"  #item_id [hidden]="true">  -->
+                        
+                        </div>
+
+                        <!-- <span class="alert text-danger" *ngIf="error">*{{msg}}</span> -->
+                     </div>
+                    <br>
+                     <div class="form-group row">
+                        <div class="col-sm-2">
+                          <label><b>Priority Module</b>&nbsp;<span class="text-danger">*</span></label>
+                        </div>
+                         <div class="col-sm-6">
+                          <input type="text" class="form-control p-2" placeholder=" "  value="{{item2}}"  id="itemtype"  #item_type (keyup)="prevent_null($event)">
+                           <!-- <input type="text"  class="form-control" placeholder=""   id="id1"  #item_id [hidden]="true">  -->
+                        
+                        </div>
+                        <span class="alert text-danger" *ngIf="error">*{{msg}}</span>
+                        <!-- <span class="alert text-success" *ngIf="done">{{msg}}</span> -->
+                        <!-- <span class="alert text-danger" *ngIf="error">*{{msg}}</span> -->
+                     </div>
+                     
+                      <div class="form-group row mt-5">
+                        <div class="col-sm-12 btnSubmitSec" >
+                          <input type="submit" class="btn btn-info" id="submit" name="submit" value="Update" [disabled]="disable_button" (click)="send_item(item_sl.value,item_type.value)">
+
+                          <!-- <input type="reset" class="btn btn-danger " id="Cancel" name="Cancel" value="Reset"> -->
+                          <div id="snackbar"><i class="fa fa-times-circle" style="color:red"></i>&nbsp; Updation failed.Please try again after some time</div>
+                        </div>
+                      </div>
+                     </form>
+
+         
+            </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<router-outlet></router-outlet>
+

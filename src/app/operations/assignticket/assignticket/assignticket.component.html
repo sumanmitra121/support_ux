@@ -1,0 +1,285 @@
+<app-header></app-header>
+<script>
+
+</script>
+<div class="page-body-wrapper">
+    <app-sidebar></app-sidebar>
+<div class="main-panel">
+    <div class="content-wrapper">
+
+
+      <div class="card">
+        <!-- <div [hidden]="alert_show">
+          <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+            <strong>
+              Item Deleted Successfully!!
+            </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true" (click)="close_alert()">&times;</span>
+            </button>
+          </div>
+        </div>
+        <div [hidden]="alert_show_for_addItem">
+          <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+            <strong>
+              Item Inserted Successfully !!
+            </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true" (click)="close_alert_add()">&times;</span>
+            </button>
+          </div>
+        </div>
+        <div [hidden]="alert_show_for_updateItem">
+          <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+            <strong>
+              Item Updated Successfully !!
+            </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true" (click)="close_alert_update()">&times;</span>
+            </button>
+          </div>
+        </div> -->
+       
+
+
+
+        <div class="card-body">
+
+
+
+
+
+
+          <div class="titleSec">
+            
+            <!-- <button type="button" class="btn btn-primary" (click)="go_to_AddItem()">Add</button> -->
+            <h2>Assign Ticket ({{this._activatedRoute.snapshot.params.id > 0 ? 'Web & Applications' : 'Others'}})</h2>
+
+            <!-- <div id="snackbar" class="text-danger pull-right">{{linkshareinterpolation}}</div> -->
+
+            <!-- <span class="confirm-div" id="snackbar" style="float:right; color:green;">
+              {{linkshareinterpolation}}
+              </span> -->
+          </div>
+
+
+          <div class="alert alert-success alert-dismissible fade in mb-3" style="text-align: center;" [hidden]="edittickit">
+            <!-- <div data-dismiss="alert" aria-label="close">&times;</div> -->
+           <b> Updation Successful!!</b> <a style="float:right;" data-dismiss="alert" aria-label="close" (click)="localStorage()">&times;</a>
+          </div>
+
+          <div class="row">
+
+
+            <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#ffffff" type = "ball-pulse" [fullScreen] = "true"><p style="color: white" > Please Wait... </p></ngx-spinner>
+
+
+
+            <!-- <div class="alert  ml-5" role="alert" [hidden]="alert_show">
+                Item Deleted Successfully!! &#x2714;
+               <span class="closebtn span pl-5" (click)="close_alert()">&times;</span>
+              </div> -->
+            <div class="col-sm-12">
+
+
+
+              <input id="getit" [hidden]="true" value="0">
+
+
+              <div class="row">
+                <div class="col-md-9 "></div>
+                
+                <div class="col-md-3 pull-right">
+                  <mat-form-field appearance="outline">
+                    <mat-label>Search</mat-label>
+                    <input matInput (keyup)="applyFilter($event)" class="pull-right" placeholder="Search Item " #input>
+                  </mat-form-field>
+                </div>
+              </div>
+              <!-- <div class="form-group row">
+                <div class="col-sm-2">
+                    <label><b>Status</b></label>
+                </div>
+                <div class="col-sm-10">
+                    <input type="radio" id="a" name="Status" value="Active">
+                    <label for="a"> Active</label><br>
+                    <input type="radio" id="i" name="Status" value="Inactive">
+                    <label for="i"> Inactive</label><br>
+                </div>
+            </div><br> -->
+              <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource" matSort>
+
+                  <ng-container matColumnDef="SL NO">
+                    <th mat-header-cell *matHeaderCellDef>#</th>
+                    <td mat-cell *matCellDef="let row;index as i"> {{i+1}} </td>
+                  </ng-container>
+
+
+                  <ng-container matColumnDef="Ticket_No">
+                    <th mat-header-cell *matHeaderCellDef>Ticket No. </th>
+                    <td mat-cell *matCellDef="let row;index as i" 
+                          [ngStyle]="{'color':cr[i]}"
+                    
+                > <span #tooltip="matTooltip"
+                matTooltip="{{row.prob_reported}}"
+                matTooltipClass="custom-tooltip"
+               matTooltipPosition="below" >{{row.tkt_no}}</span>
+               </td>
+                  </ng-container>
+                 
+                
+                  <ng-container matColumnDef="Client_Name"> 
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="client_name"> Client Name </th>
+                    <td mat-cell *matCellDef="let row">{{row.client_name}}</td>
+                  </ng-container>
+
+                  <!-- <ng-container matColumnDef="Phone_no">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="phone_no"> Phone No. </th>
+                    <td mat-cell *matCellDef="let row">{{row.phone_no}}</td>
+                  </ng-container> -->
+
+                  <ng-container matColumnDef="Assigned_to">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="emp_name"> Assigned To </th>
+                    <td mat-cell *matCellDef="let row">
+                      
+                      <!-- {{row.emp_name}} -->
+
+                      <select class="form-control" name="client" id="client" #Client (change)='SHOW_Employee(Client.value,row.id)'>
+
+                        <option value="">Select</option>
+                        <option   *ngFor="let c of ctmdata" value="{{c.emp_code}}" [selected]="row.assign_engg==c.emp_code">{{c.emp_name}}</option>
+                       
+
+                    </select>
+
+
+
+                    </td>
+                  </ng-container>
+                 
+                  <ng-container matColumnDef="Priority">
+                    <th mat-header-cell *matHeaderCellDef class="text-center"> Priority </th>
+                    <td mat-cell *matCellDef="let row"  [ngClass]="{'make-gold':row.priority == 'Low','make-medium':row.priority == 'Medium','make-high':row.priority=='High','make-critical':row.priority=='Critical','make-Customer':row.priority=='Customer Waiting'}">{{row.priority}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="Ticket_Status" >
+                    <th mat-header-cell *matHeaderCellDef  class="text-center"> Ticket&nbsp;Status </th>
+                    <td mat-cell *matCellDef="let row" class="text-center">
+                      
+                     
+                      {{row.tktStatus}}</td>
+                  </ng-container>
+
+                  <ng-container matColumnDef="ticket_log_date">
+                    <th mat-header-cell *matHeaderCellDef class="text-center">Log&nbsp;Date</th>
+                    <td mat-cell *matCellDef="let row">{{row.log_in |  date: 'dd/MM/yyyy HH:mm'}}</td>
+                  </ng-container>
+                  <ng-container matColumnDef="Edit" >
+                    <th mat-header-cell *matHeaderCellDef class="p-3"> Edit</th>
+                    <td mat-cell *matCellDef="let row" class="p-3">
+                        <a (click)="go_to_update(row.id)"
+                        data-toggle="tooltip" data-placement="bottom" title="Edit" class="deletCus">
+                        <i class="fa fa-edit menu-icon"></i>
+                    </a>
+                </td>
+                  </ng-container>
+
+                  <!-- <ng-container matColumnDef="Delete">
+                    <th mat-header-cell *matHeaderCellDef> Delete </th>
+                    <td mat-cell *matCellDef="let row"><a (click)="go_to_delete(row.id)" class="delete editeCus"
+                        title="Delete" data-toggle="modal" data-target="#MyModal"><i class="fa fa-trash-o menu-icon"
+                          style="color: #bd2130"></i></a></td>
+                  </ng-container> -->
+
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"  ></tr>
+
+
+                  <tr class="mat-row" *matNoDataRow>
+                    <td class="mat-cell" colspan="4">No data found "{{input.value}}"</td>
+                  </tr>
+                </table>
+
+                <mat-paginator [pageSizeOptions]="[100, 200, 500,1000]" showFirstLastButtons></mat-paginator>
+              </div>
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+          </div>
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+
+
+<!-- <div class="modal " id="MyModal" role="dialog">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+
+  
+      <div class="modal-header">
+        
+  
+        <button type="button" class="close  my-auto mr-1" data-dismiss="modal">&times;</button>
+      </div>
+     
+
+      <div class="modal-body ">
+        <p class="text-center">Are you sure you want to delete?</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger text-white" (click)="delete_item1()" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-primary text-white" data-dismiss="modal">No</button>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+<router-outlet></router-outlet>
+
+
+
+
+
+

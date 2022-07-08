@@ -1,0 +1,365 @@
+
+<app-header></app-header>
+<div class="page-body-wrapper">
+    <app-sidebar></app-sidebar>
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="card">
+                <div class="card-body">
+
+
+                    <div class="titleSec">
+                        <h2>View Details of Ticket No.: {{tktno}}</h2>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-sm-12">
+
+
+
+                            <form>
+
+
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Date</b></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control p-2" placeholder=""
+                                            name="date" id="itemdate" #date readonly value="{{dt | date:'dd-MM-yyyy h:mm:ss a '}}"
+                                            >
+                             
+
+                                    </div>
+
+                                    <div class="col-sm-3"></div>
+
+                                </div>
+                                <br>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Client</b></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                     
+                                        <input type="text" class="form-control p-2" placeholder=""
+                                        name="client" id="itemclient" required="" #client readonly value="{{client_name}}">
+
+
+
+
+                                    </div>
+
+                                </div>
+                                <br>
+
+                              <div class="form-group row">
+
+                                <div class="col-sm-2">
+                                    <label><b>District</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder=""
+                                        name="district" id="itemdistrict" #district readonly value="{{district_name}}"
+                                        >
+    
+
+                                </div>
+
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1">
+                                    <label><b>Client Type</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder="" name="clienttype"
+                                        id="itemclienttype" #clienttype readonly value="{{client_type}}">
+
+
+
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+
+                                <div class="col-sm-2">
+                                    <label><b>Operational Mode</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder=""
+                                        name="text" id="itemoperationalmode" #operationalmode readonly
+                                        value="{{oprn_mode}}">
+ 
+
+                                </div>
+
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1">
+                                    <label><b>Working Hours</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder="" name="workinghours"
+                                        id="itemworkinghours" #workinghours readonly value="{{working_hrs}}">
+
+
+
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+
+                                <div class="col-sm-2">
+                                    <label><b>AMC Upto</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder=""
+                                        name="amcupto" id="itemamcupto" #amcupto readonly
+                                        value="{{amc_upto | date:'dd-MM-yyyy'}}">
+                                  
+
+                                </div>
+
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1">
+                                    <label><b>Rental Upto</b></label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder="" name=""
+                                        id="itemrentalupto" #rentalupto readonly value="{{rental_upto | date: 'dd-MM-yyyy'}}">
+
+
+
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+
+                                <div class="col-sm-2">
+                                    <label><b>Phone No.</b>&nbsp;</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" placeholder=""
+
+
+                                        name="phone" id="itemphone" #phone
+                                        readonly
+                                        
+
+                                      value="{{phoneno}}">
+                                 
+
+                                </div>
+
+                                <div class="col-sm-3"></div>
+                                <div class="col-sm-1">
+                                    <label><b>Priority Status</b>&nbsp;</label>
+                                </div>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control p-2" value="{{priority}}" readonly>
+                                 
+
+
+                                </div>
+
+                            </div>
+                            <br>
+                            
+                                <br>
+
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Module</b>&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" value="{{tkt_module}}" readonly>
+                                      
+                                    </div>
+                                </div><br>
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Issue</b>&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                         <textarea rows="5" type="text" class="form-control p-2" placeholder=" "
+
+
+                                            name="issue" id="itemissue" #issue
+
+
+                                            readonly
+                                        value="{{prob_reported}}"></textarea>
+
+
+
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Assigned To</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" placeholder="" readonly
+                                           #assignedto value={{assign_to}}>
+
+
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+
+                                </div>
+                                <br>
+
+
+
+
+
+
+
+
+
+
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Attended At</b>&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" placeholder=""
+
+
+
+                                            name="Attendedat" id="Itemattendedat" #Attendedat readonly
+                                             value="{{attendedat | date:'dd-MM-yyyy h:mm:ss a '}}">
+
+
+                                    </div>
+                                    <div class="col-sm-2"></div>
+
+
+                                    <div class="col-sm-2">
+                                        <label><b>Delivery At</b></label>
+                                    </div>
+                                    <div class="col-sm-3">
+
+
+                                        <input type="text" class="form-control p-2" placeholder=""
+
+
+                                            name="Deliveryat" id="itemDeliveryat" #Deliveryat readonly
+                                             value="{{deliveryat | date:'dd-MM-yyyy h:mm:ss a'}}">
+
+
+
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label><b>Ticket Status</b>&nbsp;</label>
+                                    </div>
+                                    <div class="col-sm-3">
+
+
+
+                                         <input type="text" class="form-control p-2" placeholder=""
+
+
+                                        name="ticketstatus" id="tktstatus1" #ticketstatus readonly
+                                        value="{{status}}">
+                                    </div>
+                                    <div class="col-sm-2"></div>
+
+                                        <div class="col-sm-2">
+                                            <label><b>Work Status</b>&nbsp;</label>
+                                        </div>
+
+
+                                    <div class="col-sm-3">
+                                        <input type="text" class="form-control p-2" placeholder=""
+
+
+
+                                        name="Wrkstatus" id="wrkstatus" #wrkingstatus readonly
+                                        value="{{work_status}}">
+
+                                    </div>
+
+
+
+                                </div>
+                                <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div class="form-group row">
+
+                                    <div class="col-sm-2">
+                                        <label><b>Remarks</b></label>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <textarea rows="5" type="text" class="form-control p-2" placeholder=" "
+                                          #remarks  name="remarks" id="itemremarks" readonly
+                                          value="{{this.Remarks}}"></textarea>
+                                    </div>
+                                    <div class="col-sm-3"></div>
+
+
+                                    
+
+                                </div>
+                              
+
+
+
+
+
+
+
+                                <div class="form-group row mt-5">
+                                    <div class="col-sm-12 btnSubmitSec">
+                                       
+
+                                            <div id="snackbar"><i class="fa fa-exclamation-triangle" style="color:red"></i>
+                                                &nbsp; Updation failed.Please try again after some time</div>
+                                            
+                                    </div>
+
+                                </div>
+
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
+

@@ -1,0 +1,100 @@
+ul li a{
+    cursor:pointer
+}
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+  
+    border: 1px solid transparent;
+    border-radius: .35rem;
+  }
+   
+.is-invalid{
+    border-color: red !important;
+}
+
+
+    #capt{
+        text-align: center;
+       
+        width: 150px;
+        background-color: antiquewhite;
+        -webkit-text-stroke: 1px rgb(40, 83, 23);
+         font-style: italic;
+          font-size:larger;
+          font-weight: 200;
+           letter-spacing: 7px;
+           text-orientation:initial;
+           margin-top: 25px;
+           font-family: 'Noto Serif', 'serif';
+           
+      
+     }
+
+     
+    #capt_client{
+        text-align: center;
+       
+        width: 150px;
+        background-color: antiquewhite;
+        -webkit-text-stroke: 1px rgb(40, 83, 23);
+         font-style: italic;
+          font-size:larger;
+          font-weight: 200;
+           letter-spacing: 7px;
+           text-orientation:initial;
+           margin-top: 25px;
+           font-family: 'Noto Serif', 'serif';
+           
+      
+     }
+
+
+
+     #refresh{
+        color:rgb(0, 0, 0);
+        cursor: pointer;
+      }
+      #refresh:active{
+        -webkit-animation: spin 1 0.4s linear;
+        -moz-animation: spin 1 0.4s linear;
+        animation:spin 1 0.4s linear;
+      }
+      @-webkit-keyframes spin {
+         100%{-webkit-transform: rotate(360deg);}
+      }
+      @-moz-keyframes spin {
+        100%{-webkit-transform: rotate(360deg);}
+      }
+      @keyframes spin {
+        100%{-webkit-transform: rotate(360deg);}
+      }
+
+
+      #refresh_client{
+        color:rgb(0, 0, 0);
+        cursor: pointer;
+      }
+      #refresh_client:active{
+        -webkit-animation: spin 1 0.4s linear;
+        -moz-animation: spin 1 0.4s linear;
+        animation:spin 1 0.4s linear;
+      }
+      @-webkit-keyframes spin {
+         100%{-webkit-transform: rotate(360deg);}
+      }
+      @-moz-keyframes spin {
+        100%{-webkit-transform: rotate(360deg);}
+      }
+      @keyframes spin {
+        100%{-webkit-transform: rotate(360deg);}
+      }
+
+
+.modal{
+  margin:0 0 0 35%;
+}
+.but{
+  background-color: #2c2e3e;
+}
+.form-control{padding:0 11px}

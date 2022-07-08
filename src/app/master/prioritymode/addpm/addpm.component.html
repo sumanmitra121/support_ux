@@ -1,0 +1,81 @@
+<app-header></app-header>
+
+
+<div class="page-body-wrapper">
+    <app-sidebar></app-sidebar>
+	
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="card">
+           <div class="card-body">
+             
+             
+             <div class="titleSec">
+               <!-- <button type="button" class="btn btn-primary">Add</button> -->
+             <h2>Add Priority Mode</h2> 
+             </div>
+
+
+             
+            <div class="row">
+               <div class="col-sm-12"> 
+                   <form>
+                            
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                          <label><b>Priority Module</b>&nbsp;<span class="text-danger">*</span></label>
+                        </div>
+                         <div class="col-sm-6">
+                          <input type="text" class="form-control p-2" name="item_name" id="itemname" #item_name (keyup)="prevent_null($event)">
+                         </div>
+                         <span class="alert text-danger" *ngIf="error">*{{msg}}</span>
+                         <span class="alert text-success" *ngIf="done">{{msg}}</span>
+                         <!-- <span class="alert text-danger" *ngIf="error">*{{msg}}</span> -->
+                     </div>
+
+
+                     <!-- <div class="form-group row mt-4" >
+                        <div class="col-sm-1">
+                                      <label>
+                                      </label>
+                                    </div>
+                        <div class="col-sm-2">
+                         <input type="checkbox" id="license" name="license" >
+                        <b class="ml-2">License</b>
+                    
+                      </div>
+                      <div class="col-sm-2">
+                        <input type="checkbox" id="Insurance" name="insurance" >
+                        <b class="ml-2">Insurance</b>
+                        </div>
+                        <div class="col-sm-2">
+                        <input type="checkbox" id="amc" name="amc" >
+                        <b class="ml-2">AMC</b>
+                        </div>
+                      </div> -->
+
+                      <!-- <span class="alert text-danger" *ngIf="errorcheckbox">*{{msg_forcheckbox}}</span> -->
+
+                      <div class="form-group row mt-5">
+                        <div class="col-sm-12 btnSubmitSec" >
+                          <input type="submit" class="btn btn-info" id="submit" name="submit" value="Submit" [disabled]="disable_button" (click)="send_item(item_name.value)">
+
+                          <!-- <input type="reset" class="btn btn-danger"  id="Cancel" name="Cancel" value="Reset"> -->
+                          <!-- <input type="reset" class="btn btn-danger " id="Cancel" name="Cancel" value="Reset"> -->
+
+                          <button type="reset" class="btn btn-danger" id="cancel" name="cancel" (click)="clear_field()">Reset <i class="fa fa-refresh" [hidden]="spinshow"style="color:white;"></i><i class="fa fa-refresh fa-spin" [hidden]="!spinshow" style="color:white"></i></button>
+
+                          <div id="snackbar"><i class="fa fa-times-circle" style="color:red"></i>&nbsp; Insertion failed.Please try again after some time</div>
+                        </div>
+                      </div>
+                     </form>
+
+         
+            </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<router-outlet></router-outlet>

@@ -1,0 +1,62 @@
+<div class="LoginCardLayout">
+
+
+	<div class="signUpCardLayout-card memberShipArea">
+	<div class="LoginCardLayout-LoginLogoContainer "><a routerLink='/' routerLinkActive="true"><img src="../../../assets/Login_assets/images/logo.png" alt="" class="LoginCardLayout-LogoLogo"/></a></div>
+    <!--For alert of unsuccess of finding Email  -->
+
+
+<div class="forGotPassCardLayout-card">
+
+
+
+		<div class="LoginDefaultView-content">
+
+      <div class="alert alert-danger alert-dismissible fade in text-center" *ngIf="!error">
+
+        <strong class="pt-1">
+          {{error_msg}}
+        </strong>
+        <button type="button" class="close pt-1 " data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true" (click)="close_alert()">&times;</span>
+          </button>
+      </div>
+
+
+
+
+		<h2 class="forgotTitle">Forgot your password?</h2>
+	<form class="LoginEmailPasswordForm" [formGroup]="LoginForm" (ngSubmit)="Submit()">
+		<div class="LoginEmailPasswordForm-emailAndPassword">
+		<span class="Typography Typography--colorDarkGray1 Typography--s">Email address</span>
+			<!-- <input type="text" class="TextInputBase SizedTextInput SizedTextInput--medium TextInput LoginEmailPasswordForm-emailInput"  -->
+			<input type="text" class="form-control LoginEmailPasswordForm-emailInput"
+      (change)="prevent($event)"
+			formControlName="email" [ngClass]="{'is-invalid': login && f.email.errors,'is-valid': login && f.email.valid }"
+			placeholder="Enter Email Address">
+
+			<div *ngIf="login &&f.email.errors" class="invalid-feedback">
+				<div *ngIf="f.email.errors.required">*Please supply
+					email</div>
+				<div *ngIf="f.email.errors.pattern">*Please provide valid email</div>
+
+
+			</div>
+		</div>
+
+		<input type="submit" value="Submit" class="forgotPassBtn" [disabled]="disabled_button">
+
+	</form>
+
+
+
+
+	</div>
+		</div>
+
+
+
+
+	</div>
+</div>
+

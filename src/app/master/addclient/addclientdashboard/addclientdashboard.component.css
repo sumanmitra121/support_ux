@@ -1,0 +1,23 @@
+/* input[type="radio"]{float:left;width:20px;margin-right:10px;}
+label{float:left;width:100px;} */
+/* td, th {
+    width: 18%;
+  } */
+
+  table {
+    table-layout: fixed;
+  }
+  
+  .modal{
+    margin:0 0 0 35%;
+  }
+
+  .alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    width:inherit;
+    border: 1px solid transparent;
+    border-radius: .35rem;
+  }
+
+  
