@@ -68,7 +68,7 @@ query getSupportLogDtls($id:String!,$user_type:String!,$user_id:String!){
     delivery,
     work_status,
     file_path
-
+    schema_name
   }
 }`
 @Component({
@@ -82,7 +82,7 @@ query getSupportLogDtls($id:String!,$user_type:String!,$user_id:String!){
 })
 export class EditadanddComponent implements OnInit {
   configEditor= commonEditor.config;
-
+   _schema_name:any;
   _uploaded_type:any
   _uploaded_img:any;
   id:any;
@@ -136,9 +136,8 @@ export class EditadanddComponent implements OnInit {
   issue:any;
   work:any;
   wrork_stat:boolean=false;
-  constructor(public datepipe: DatePipe,private apollo:Apollo,private route:ActivatedRoute,private router:Router,public toastr: ToastrManager) {}
+  constructor(public datepipe: DatePipe,private apollo:Apollo,public route:ActivatedRoute,private router:Router,public toastr: ToastrManager) {}
   ngOnInit(): void {
-
    this.issue=document.getElementById("itemissue");
    console.log("empty:" +this.issue.value)
 
@@ -218,14 +217,13 @@ export class EditadanddComponent implements OnInit {
             this.priority_status=data.getSupportLogDtls[0].priority;
             this.tkt_module=data.getSupportLogDtls[0].module;
             this.prob_reported=data.getSupportLogDtls[0].prob_reported;
-          console.log(this.prob_reported);
-
             this.assign_engg=data.getSupportLogDtls[0].emp_name;
             this.Remarks=data.getSupportLogDtls[0].remarks;
             this.TktStatus=data.getSupportLogDtls[0].tktStatus;
             this.tktid=data.getSupportLogDtls[0].tkt_status;
-            // this.valid_init= this.tktid!='' ? false:true;
-            console.log(this.valid_init)
+            this._schema_name = data.getSupportLogDtls[0].schema_name;
+            console.log(this._schema_name);
+            
             this.logDate=data.getSupportLogDtls[0].log_in;
             this.c=data.getSupportLogDtls[0].call_attend;
             this.d=data.getSupportLogDtls[0].delivery;
@@ -235,14 +233,6 @@ export class EditadanddComponent implements OnInit {
             console.log(this.w,this.d,this.c)
             this.c =this.datepipe.transform(this.c, 'medium');
             this.d=this.datepipe.transform(this.d, 'medium');
-
-
-            console.log( this.tkt_no)
-           console.log(this.client_name);
-           console.log( this.district_name);
-           console.log(this.client_type);
-           console.log(this.oprn_mode);
-           console.log(this.c,this.d,this.w)
 
            if(this.c==''){
              console.log("c")
@@ -273,8 +263,6 @@ export class EditadanddComponent implements OnInit {
            }
 
            $('.select2').select2("val",this.tktid);
-
-
           })
 
       })
@@ -352,7 +340,7 @@ else{
       this.Attend=data;
       if( this.Attend.updateDeliverTkt.success==1){
         localStorage.setItem('attendent','1');
-        this.router.navigate(['/operations/attendanddeliver',0]).then(() => {
+        this.router.navigate(['/operations/attendanddeliver',this.route.snapshot.params.u_type_code]).then(() => {
           window.location.reload()
         });
       }

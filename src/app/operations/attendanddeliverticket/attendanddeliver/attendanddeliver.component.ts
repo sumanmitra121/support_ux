@@ -123,7 +123,7 @@ export class AttendanddeliverComponent implements OnInit {
     this.router.navigate(['/addclient/addcl'])   ; 
   }
   go_to_update(v1:any){
-    this.router.navigate(['/operations/editattendanddeliver',v1])
+    this.router.navigate(['/operations/editattendanddeliver',v1,this._activateRoute.snapshot.params.id])
   }
 
   private fetch_data(){

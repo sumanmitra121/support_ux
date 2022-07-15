@@ -112,6 +112,7 @@ export class EditatComponent implements OnInit {
   valid_init=true;
   input_assigned:any;
   ngOnInit(): void {
+    console.log(this.route.snapshot.params.u_type_code)
     this.prob=document.getElementById('itemissue');
     // console.log(this.prob.value)
     
@@ -170,12 +171,6 @@ export class EditatComponent implements OnInit {
           this.LogDate=data.getSupportLogDtls[0].log_in;
           this._uploaded_img = global.raw_url+data.getSupportLogDtls[0].file_path;
           this._uploaded_type = data.getSupportLogDtls[0].file_path ? ( data.getSupportLogDtls[0].file_path.substring(data.getSupportLogDtls[0].file_path.length -3) == 'pdf' ? 1 : 2) : 0; 
-           console.log("value1="+this.assss_id);
-          console.log( this.tkt_no)
-         console.log(this.client_name);
-         console.log( this.district_name);
-         console.log(this.client_type);
-         console.log(this.priority_status);
          if(this.prob_reported==""){
           this.valid_issue=true;
           console.log("empty",this.prob_reported)
@@ -197,7 +192,6 @@ export class EditatComponent implements OnInit {
 
                }
          }
-         $('.select2').select2('val',this.assss_id)
 
 
         
@@ -206,16 +200,13 @@ export class EditatComponent implements OnInit {
         else
          this.valid_init=false;
 
+          // $('.select2').select2({val : this.assss_id});
+          $('.ass_engg').val(this.assss_id).trigger('change');
         })
-      
     })
   })
-  $('.ass_engg').select2({}).on('select2:select',(e:any)=>{
-     this.select_assigned(e.params.data.id)
-
-  })
-
-  }  
+  $('.ass_engg').select2({}).on('select2:select',(e:any)=>{this.select_assigned(e.params.data.id);})  
+}  
   select_assigned(v:any){
     if(v==''){
     this.company=true;
@@ -265,9 +256,18 @@ export class EditatComponent implements OnInit {
       if(this.edit.updateAssignTkt.success==1){
         localStorage.setItem('edittickit','1');
         localStorage.setItem('E_notify','1');
-        this.router.navigate(['/operations/assignticket',0]).then(() => {
-          window.location.reload();
-      })
+        if(this.route.snapshot.params.u_type_code > 0){
+
+          this.router.navigate(['/operations/assignticket',this.route.snapshot.params.u_type_code]).then(() => {
+            window.location.reload();
+        })
+        }
+        else{
+          this.router.navigate(['/op_assignticket',this.route.snapshot.params.u_type_code]).then(() => {
+            window.location.reload();
+        })
+        }
+        
       }
        
       else

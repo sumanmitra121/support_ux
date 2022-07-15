@@ -1,7 +1,6 @@
 import { AngularEditorConfig } from "@kolkov/angular-editor";
 
 export class commonEditor{
-
     static config: AngularEditorConfig = {
         editable: true,
         spellcheck: true,

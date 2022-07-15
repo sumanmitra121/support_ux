@@ -147,7 +147,7 @@ export class AssignticketComponent implements OnInit {
   }
   go_to_update(v1:any){
     console.log("v1:" +v1);
-    this.router.navigate(['/operations/editassignticket',v1])
+    this.router.navigate(['/operations/editassignticket',v1,this._activatedRoute.snapshot.params.id])
   }
 
 

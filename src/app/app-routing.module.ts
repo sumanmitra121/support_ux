@@ -199,7 +199,7 @@ const routes: Routes = [
     component:AssignticketComponent
   },
   {
-    path:'operations/editassignticket/:id',
+    path:'operations/editassignticket/:id/:u_type_code',
     canActivate:[AfterloginGuard],
     component:EditatComponent
   },
@@ -230,7 +230,7 @@ const routes: Routes = [
   },
   
   {
-    path:'operations/editattendanddeliver/:id1',
+    path:'operations/editattendanddeliver/:id1/:u_type_code',
     canActivate:[AfterloginGuard],
     component:EditadanddComponent
   },

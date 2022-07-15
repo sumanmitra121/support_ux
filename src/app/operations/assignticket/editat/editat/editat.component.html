@@ -239,9 +239,6 @@
                                     <input type="text" class="form-control p-2" placeholder=""
                                         name="amcupto" id="itemamcupto" #amcupto readonly
                                         value="{{this.amc_upto}}">
-                                    <!-- <span  class="text-danger"
-                                    *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
-
                                 </div>
 
                                 <div class="col-sm-3"></div>
@@ -251,11 +248,6 @@
                                 <div class="col-sm-3">
                                     <input type="text" class="form-control p-2" placeholder="" name=""
                                         id="itemrentalupto" #rentalupto readonly value="{{this.rental_upto}}">
-                                    <!-- <span  class="text-danger ml-3"
-                                    *ngIf="upload&&!email">*please Enter Email</span> -->
-
-
-
                                 </div>
                             </div>
                             <br>
@@ -268,8 +260,6 @@
                                     <input type="text" class="form-control p-2" placeholder=""
                                         name="phone" id="itemphone" #phone 
                                         value="{{this.phone_no}}">
-                                    <!-- <span  class="text-danger"
-                                    *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
 
                                 </div>
 
@@ -281,60 +271,9 @@
                                     <input type="text" class="form-control p-2" placeholder="" name=""
                                         id="itemprioritystatus" #prioritystatus readonly 
                                         value="{{this.priority_status}}">
-                                    <!-- <span  class="text-danger ml-3"
-                                    *ngIf="upload&&!email">*please Enter Email</span> -->
-
-
-
                                 </div>
                             </div>
                             <br>
-                                <!-- <div class="form-group row">
-                                    <div class="col-sm-2">
-                                        <label><b>District</b></label>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <select class="form-control" name="company_type" #comp>
-
-                                            <option value="">Select</option>
-                                            <option value="P">Private Ltd</option>
-                                            <option value="R">Partnership</option>
-                                            <option value="I">Individual</option>
-                                            <option value="L">Public Ltd</option>
-                                            <option value="G">Govt.Organisation</option>
-                                            <option value="O">Others</option>
-
-                                        </select>
-                                         <span  class="text-danger"
-                                    *ngIf="upload&&!company">*please Enter Company type</span> 
-
-
-                                    </div>
-                                    <div class="col-sm-3"></div>
-
-                                    <div class="col-sm-1">
-                                        <label><b>Client Type</b></label>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <select class="form-control" name="company_type" #comp>
-
-                                            <option value="">Select</option>
-                                            <option value="P">Private Ltd</option>
-                                            <option value="R">Partnership</option>
-                                            <option value="I">Individual</option>
-                                            <option value="L">Public Ltd</option>
-                                            <option value="G">Govt.Organisation</option>
-                                            <option value="O">Others</option>
-
-                                        </select>
-                                         <span  class="text-danger"
-                                        *ngIf="upload&&!company">*please Enter Company type</span> 
-
-
-                                    </div>
-
-
-                                </div> -->
                                 <br>
                                
                                 <div class="form-group row">
@@ -375,7 +314,7 @@
                                     <div class="col-sm-3">
                                         <select class="form-control ass_engg select2"  name="assigned_to" id="assign" (click)="select_assigned(assignedto.value)" #assignedto>
 
-                                            <option value="">Select</option>
+                                            <option value="0">Select</option>
                                             <option *ngFor="let m of emplist" value="{{m.emp_code}}" [selected]="assss_id==m.emp_code">{{m.emp_name}}</option>
 
                                      </select>

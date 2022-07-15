@@ -345,14 +345,23 @@
                                     <div class="col-sm-2">
                                         <label><b>Module</b></label>
                                     </div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-3" >
                                         <input type="text" class="form-control p-2" placeholder=""
                                             name="module" id="module" #module readonly
                                             value="{{this.tkt_module}}">
-                                        <!-- <span  class="text-danger"
-                                         *ngIf="upload&&!mobile">*please Enter Mobile Number</span>  -->
-
                                     </div>
+                                    <div class="col-sm-3"></div>
+                                    <ng-container *ngIf="this.route.snapshot.params.u_type_code == '0'">
+                                        <div class="col-sm-1">
+                                            <label><b>Schema</b></label>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" class="form-control p-2" 
+                                                name="Schema_Name" value="{{_schema_name}}" id="SchemaName"  readonly
+                                               >
+                                        </div>
+                                    </ng-container>
+                                    
                                 </div><br>
                                 <div class="form-group row">
 

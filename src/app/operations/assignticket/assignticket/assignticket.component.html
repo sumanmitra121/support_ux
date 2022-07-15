@@ -147,7 +147,7 @@
 
                       <select class="form-control" name="client" id="client" #Client (change)='SHOW_Employee(Client.value,row.id)'>
 
-                        <option value="">Select</option>
+                        <option value="0">Select</option>
                         <option   *ngFor="let c of ctmdata" value="{{c.emp_code}}" [selected]="row.assign_engg==c.emp_code">{{c.emp_name}}</option>
                        
 
