@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Apollo, gql } from 'apollo-angular';
 import { global } from 'src/app/global';
+import { commonEditor } from 'src/app/utilitY/commonEditor';
 declare const $: any;
 
 const GET_CLIENT_DATA=gql`
@@ -87,6 +88,7 @@ mutation clientTktUpdate($id:String!,
   '../../../../assets/masters_css_js/css/res.css']
 })
 export class EditclientraiseticketComponent implements OnInit {
+  configEditor= commonEditor.config;
   _uploaded_type:any
   _uploaded_img:any;
   Id:any;
@@ -160,7 +162,8 @@ keyword:any;
   remarks:any;
   email:any;
   constructor(private router:Router,private apollo:Apollo,private route:ActivatedRoute) {
-
+    this.configEditor.editable=false;
+    this.configEditor.showToolbar=false;
    }
 
   ngOnInit(): void {
@@ -414,9 +417,10 @@ showsnackbar() {
        console.log(this.tkt_module);
        this.prob_reported=data.clientGetTkt[0].prob_reported;
        this.Remarks=data.clientGetTkt[0].remarks;
+        console.log(this.Remarks)
        this.ASSIGN_ENG=data.clientGetTkt[0].assign_engg;
        this._uploaded_img = global.raw_url+data.clientGetTkt[0].file_path;
-       this._uploaded_type = data.clientGetTkt[0].file_path ? ( data.clientGetTkt[0].file_path.substring(data.clientGetTkt[0].file_path.length -3) == 'pdf' ? 1 : 2) : 0; 
+       this._uploaded_type = data.clientGetTkt[0].file_path ? ( data.clientGetTkt[0].file_path.substring(data.clientGetTkt[0].file_path.length -3) == 'pdf' ? 1 : 2) : 0;
        console.log(this.tkt_module);
        $('select').select2().select2('val',this.tkt_module)
        })

@@ -159,7 +159,7 @@ query totalTktByClient($user_type: String!, $user_id: String!){
 export class DashboardComponent implements OnInit,AfterViewInit {
    Tkt_no:any;
    _tkt_status:any;
-   displayedColumns2: string[] = ['position','tkt_no', 'Log', 'Assignedto', 'Action'];
+   displayedColumns2: string[] = ['position','tkt_no', 'Log', 'Assignedto','Status', 'Action'];
   // dataSource2 = ELEMENT_DATA;
   dataSource2 = new MatTableDataSource<any>();
 
@@ -219,7 +219,7 @@ export class DashboardComponent implements OnInit,AfterViewInit {
   client_last_tkt_no:any;
   client_last_tkt_log_date:any;
   client_last_tkt_wrk_status:any;
-  
+
   constructor(private router:Router,private apollo:Apollo) {
 
   }
@@ -246,15 +246,15 @@ export class DashboardComponent implements OnInit,AfterViewInit {
           this._tkt_status = data.clientLastTke[0].tktStatus;
           this.Tkt_no = data.clientLastTke[0].tkt_no;
           console.log("Employee PhoneNo." +this.employee_phone);
-          
+
 
 
 
     })
 
-  
 
-    
+
+
     this.randomColor = Math.floor(Math.random()*16777215).toString(16);
     this.fetch_data();
     // this.fetch_data1();
@@ -300,7 +300,7 @@ export class DashboardComponent implements OnInit,AfterViewInit {
         this.this_year= data.closeTkt[0].this_year;
         this.lifetime= data.closeTkt[0].lifetime;
 
-        
+
 
       })
 
@@ -318,12 +318,12 @@ export class DashboardComponent implements OnInit,AfterViewInit {
     })
       .valueChanges
       .subscribe(({ data, loading }) => {
-      
+
         this.tkt = localStorage.getItem('user_Type') != 'C' ? data.openCloseTkt[0] : data.clientOpenCloseTkt[0];
         this.op=this.tkt.opened;
          this.clos=this.tkt.closed;
          this.tot=this.op+this.clos;
-        
+
 
       })
 
@@ -334,26 +334,26 @@ export class DashboardComponent implements OnInit,AfterViewInit {
 this.apollo.watchQuery<any>({
   query:CHART_PIE,
     variables: {
-      user_type:localStorage.getItem('user_Type'), 
+      user_type:localStorage.getItem('user_Type'),
       user_id:localStorage.getItem('UserId')
-  
+
     },
     pollInterval:40000,
-  
+
   }) .valueChanges
   .subscribe(({ data, loading }) => {
- 
+
    for(let i=0;i<data.totalTktByClient.length;i++){
-      
+
     this.total[i]=data.totalTktByClient[i].total_tkt
-    
+
     this.cli_typ[i]=data.totalTktByClient[i].client_type;
     this.colors4[i]='#'+Math.floor(Math.random()*18777219).toString(16);
     // var o = Math.round, r = Math.random, s = 255;
     // var g= 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ',' + .2 + ')';
     // this.colors4[i]=g;
      }
-  
+
 
 var MyPie = new Chart('pie3', {
   type: 'pie',
@@ -362,7 +362,7 @@ var MyPie = new Chart('pie3', {
     datasets: [{
       data:this.total,
       backgroundColor:this.colors4,
-     
+
     }]
   },
   options: {
@@ -384,11 +384,11 @@ var MyPie = new Chart('pie3', {
 
 
 
-// For 2nd horizontal bar chart 
+// For 2nd horizontal bar chart
 this.apollo.watchQuery<any>({
 query: localStorage.getItem('user_Type') != 'C' ? SHOW_EMPLOYWW : CLIENT_MONTHLY_TKT,
   variables: {
-    user_type:localStorage.getItem('user_Type'), 
+    user_type:localStorage.getItem('user_Type'),
     user_id:localStorage.getItem('UserId')
 
   },
@@ -399,7 +399,7 @@ query: localStorage.getItem('user_Type') != 'C' ? SHOW_EMPLOYWW : CLIENT_MONTHLY
   // console.log(data);
   if(localStorage.getItem('user_Type') != 'C'){
     for(let i=0;i<data.workDone.length;i++){
-    
+
       this.Done[i]=data.workDone[i].done;
       this.Emp[i]=data.workDone[i].emp_name;
       this.colors2[i]='#'+Math.floor(Math.random()*16777215).toString(16)
@@ -409,7 +409,7 @@ query: localStorage.getItem('user_Type') != 'C' ? SHOW_EMPLOYWW : CLIENT_MONTHLY
        }
   }else{
     for(let i=0;i<data.clientMonthlySupport.length;i++){
-    
+
       this.Done[i]=data.clientMonthlySupport[i].no_tkt;
       this.Emp[i]=data.clientMonthlySupport[i].date_name;
       this.colors2[i]='#'+Math.floor(Math.random()*16777215).toString(16)
@@ -418,7 +418,7 @@ query: localStorage.getItem('user_Type') != 'C' ? SHOW_EMPLOYWW : CLIENT_MONTHLY
       // this.colors2[i]=g;
        }
   }
-  
+
   // console.log(this.Done);
   // console.log(this.Emp);
 
@@ -466,7 +466,7 @@ this.apollo.watchQuery<any>({
   .valueChanges
   .subscribe(({ data, loading }) => {
     // console.log("tkt:" ,data);
-     
+
     for(let i=0;i<data.openTktByStatus.length;i++){
       console.log(data.openTktByStatus[i].tkt_status);
     this.tkt_stat[i]=data.openTktByStatus[i].tkt_status;
@@ -478,25 +478,25 @@ this.apollo.watchQuery<any>({
     // console.log(this.colors1[i])
     }
     // console.log(this.tkt_stat);
-   
+
 
 
    var MyChart = new Chart('pie1', {
       type: 'horizontalBar',
-     
+
       data : {
         labels:this.tkt_stat,
         datasets: [{
-        
+
           data:this.stat,
-          
+
           // backgroundColor: [
           //   'rgb(255, 99, 132)',
           //   'rgb(54, 162, 235)',
           //   'rgb(255, 205, 86)'
           // ],
           backgroundColor:this.colors1,
-          
+
           // hoverOffset: 4
         }]
       },
@@ -512,7 +512,7 @@ this.apollo.watchQuery<any>({
         responsive:true,
          maintainAspectRatio:false,}
     })
-    
+
 
 
   })
@@ -525,16 +525,16 @@ this.apollo.watchQuery<any>({
         variables: {
           user_type:localStorage.getItem('user_Type'),
           user_id:localStorage.getItem('UserId')
-      
+
         },
         pollInterval:40000,
-      
+
       })
         .valueChanges
         .subscribe(({ data, loading }) => {
           // console.log("Bar Chart");
           // console.log("tkt:" ,data);
-           
+
           for(let i=0;i<data.totalTktByDate.length;i++){
             // console.log(data.totalTktByDate[i].no_tkt);
           this.no_tkt[i]=data.totalTktByDate[i].no_tkt;
@@ -550,10 +550,10 @@ this.apollo.watchQuery<any>({
      data: {
         labels: this.date_time,
         datasets: [{
-           
+
             data: this.no_tkt,
             backgroundColor: this.colors3,
-            
+
             borderWidth: 1
         }]
     },

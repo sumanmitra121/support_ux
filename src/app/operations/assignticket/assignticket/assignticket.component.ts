@@ -72,7 +72,7 @@ mutation  updateAssignEng($user_id:String!, $id: String!, $assign_engg: String!)
 @Component({
   selector: 'app-assignticket',
   templateUrl: './assignticket.component.html',
-  styleUrls: ['./assignticket.component.css', 
+  styleUrls: ['./assignticket.component.css',
   '../../../../assets/masters_css_js/css/font-awesome.css',
   '../../../../assets/masters_css_js/css/apps.css',
   '../../../../assets/masters_css_js/css/apps_inner.css',
@@ -83,7 +83,7 @@ mutation  updateAssignEng($user_id:String!, $id: String!, $assign_engg: String!)
 export class AssignticketComponent implements OnInit {
 
   displayedColumns: string[] = ['SL NO','Ticket_No', 'Client_Name','Assigned_to','Priority','Ticket_Status','ticket_log_date','Edit'];
-  dataSource = new MatTableDataSource<any> (); 
+  dataSource = new MatTableDataSource<any> ();
   ctmdata:any;
   s:any;
   pop:boolean=true;
@@ -104,33 +104,33 @@ export class AssignticketComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('ss');
-    
+
     this.apollo.watchQuery<any>({
       query: FOR_GET_EMPLOYEE
-      
+
     })
       .valueChanges
       .subscribe(({ data}) => {
         console.log(data);
         if(this._activatedRoute.snapshot.params.id > 0){
-           
-           this.ctmdata = data.getEngList.filter((x:any) => x.user_type =='W');
 
+           this.ctmdata = data.getEngList.filter((x:any) => x.user_type =='W');
+          console.log(this.ctmdata)
         }
         else{
           this.ctmdata = data.getEngList.filter((x:any) => x.user_type !='W');
 
-        }   
+        }
         console.log(this.ctmdata);
-        
+
   })
-    
+
   console.log(this._activatedRoute.snapshot.params.id);
-  
+
   if( localStorage.getItem('edittickit')=='1'){
             this.edittickit=false;
        }
-     
+
     localStorage.setItem('address', '/operations/assignticket');
     localStorage.setItem('Active', '1');
 
@@ -143,7 +143,7 @@ export class AssignticketComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   go_to_AddItem(){
-    this.router.navigate(['/addclient/addcl']); 
+    this.router.navigate(['/addclient/addcl']);
   }
   go_to_update(v1:any){
     console.log("v1:" +v1);
@@ -155,15 +155,15 @@ export class AssignticketComponent implements OnInit {
   // public select_client(v:any){}
 
   private fetch_data(){
-   
-  
 
-  
+
+
+
   // $('#client').on("change",  (e:any) => {
   //  console.log(e);
   //  console.log("select2:select" + e.params.data.id);
   //  console.log("select2:select" + e.params.data.text);
-    
+
   // })
 
 
@@ -177,7 +177,7 @@ export class AssignticketComponent implements OnInit {
          user_id:localStorage.getItem('UserId')
       },
       pollInterval:20000
-      
+
     })
       .valueChanges
       .subscribe(({ data}) => {
@@ -188,7 +188,7 @@ export class AssignticketComponent implements OnInit {
         // for(let i=0;i<this.Tickite.getSupportLogDtls.length;i++){
         //   this.cur_date=this.datePipe.transform(this.todayString,'yyyy-MM-dd');
         //   this.past_date=this.datePipe.transform(this.Tickite.getSupportLogDtls[i].log_in,'yyyy-MM-dd');
-          
+
         //   if(this.past_date < this.cur_date){
         //     console.log("less")
         //       this.cr[i]='red';
@@ -199,32 +199,32 @@ export class AssignticketComponent implements OnInit {
         //   }
         // }
             console.log(this._activatedRoute.snapshot.params.id);
-            
+
         if(this._activatedRoute.snapshot.params.id > 0){
           console.log(this._activatedRoute.snapshot.params.id);
-          
+
                  this.Tickite = data.getSupportLogDtls.filter((x:any) => x.client_type_id == 18);
         }
         else{
           console.log({"sad":this._activatedRoute.snapshot.params.id});
-          this.Tickite = data.getSupportLogDtls.filter((x:any) => x.client_type_id != 18); 
+          this.Tickite = data.getSupportLogDtls.filter((x:any) => x.client_type_id != 18);
         }
         console.log(this.Tickite);
         this.setColors()
-        
-           
+
+
          this.putdata(this.Tickite);
          this.spinner.hide();
       })
 
-    
+
   }
   setColors(){
-   
+
         for(let i=0;i<this.Tickite.length;i++){
           this.cur_date=this.datePipe.transform(this.todayString,'yyyy-MM-dd');
           this.past_date=this.datePipe.transform(this.Tickite[i].log_in,'yyyy-MM-dd');
-          
+
           if(this.past_date < this.cur_date){
             console.log("less")
               this.cr[i]='red';
@@ -254,11 +254,11 @@ SHOW_Employee(v:any,v1:any){
     variables:{
       user_id: localStorage.getItem("UserId"),
       id:v1,
-      assign_engg:v, 
+      assign_engg:v,
       }
   }).subscribe(({data})=>{
     console.log(data);
-    
+
     this.s=data;
     console.log("Suceess:", this.s.updateAssignEng.success)
     if(this.s.updateAssignEng.success>0){
